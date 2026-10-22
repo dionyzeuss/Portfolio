@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Flappy Bird Game | Dom.</title>
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+    <style>
+
+        /* =========================================
+           FLAPPY BIRD PROJECT PAGE
+        ========================================= */
+
+        .flappy-page {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 150px 40px 80px;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .flappy-header {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+
+        }
+
+
+        .project-label {
+
+            display: inline-block;
+
+            padding: 7px 16px;
+
+            margin-bottom: 18px;
+
+            border-radius: 30px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37, 99, 235, 0.12);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.35);
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .flappy-header h1 {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+            color: #60a5fa;
+
+            line-height: 1.1;
+
+        }
+
+
+        .flappy-header p {
+
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            font-size: 18px;
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================================
+           VIDEO
+        ========================================= */
+
+        .flappy-video {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: 0 auto 60px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            background: #020617;
+
+            box-shadow:
+                0 25px 60px
+                rgba(0,0,0,.5);
+
+        }
+
+
+        .flappy-video video {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+        }
+
+
+        /* =========================================
+           PROJECT INTRODUCTION
+        ========================================= */
+
+        .project-introduction {
+
+            padding: 35px;
+
+            margin-bottom: 40px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111827,
+                    #0b1120
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+        }
+
+
+        .project-introduction h2 {
+
+            color: #60a5fa;
+
+            font-size: 28px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .project-introduction p {
+
+            color: #bfc8d8;
+
+            line-height: 1.9;
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .project-introduction p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           INFORMATION GRID
+        ========================================= */
+
+        .flappy-info {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr
+                1fr;
+
+            gap: 30px;
+
+        }
+
+
+        .flappy-card {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111827,
+                    #0b1120
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease;
+
+        }
+
+
+        .flappy-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(96,165,250,.35);
+
+        }
+
+
+        .flappy-card h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .flappy-card p {
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .flappy-card p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           FEATURE LIST
+        ========================================= */
+
+        .feature-list {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+
+        }
+
+
+        .feature-list li {
+
+            position: relative;
+
+            padding-left: 28px;
+
+            margin-bottom: 15px;
+
+            color: #bfc8d8;
+
+            line-height: 1.7;
+
+        }
+
+
+        .feature-list li::before {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            color: #60a5fa;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           DEVELOPMENT SECTION
+        ========================================= */
+
+        .development-section {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+
+        }
+
+
+        .highlight-box {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(37,99,235,.12),
+                    rgba(15,23,42,.8)
+                );
+
+            border:
+                1px solid
+                rgba(59,130,246,.25);
+
+        }
+
+
+        .highlight-box h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .highlight-box p {
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .highlight-box p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           TECHNOLOGIES
+        ========================================= */
+
+        .technology-card {
+
+            margin-top: 30px;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111827,
+                    #0b1120
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+        }
+
+
+        .technology-card h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .technology-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+        }
+
+
+        .technology-tags span {
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37,99,235,.1);
+
+            border:
+                1px solid
+                rgba(59,130,246,.4);
+
+            font-size: 13px;
+
+            transition: .3s;
+
+        }
+
+
+        .technology-tags span:hover {
+
+            background:
+                rgba(37,99,235,.2);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =========================================
+           PROJECT DETAILS
+        ========================================= */
+
+        .project-details {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .detail-item {
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                #0b1120;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+        }
+
+
+        .detail-item h3 {
+
+            color: #60a5fa;
+
+            font-size: 15px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .detail-item p {
+
+            color: #d1d5db;
+
+            font-size: 14px;
+
+            margin: 0;
+
+        }
+
+
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
+        .back-projects-container {
+
+            text-align: center;
+
+            margin-top: 55px;
+
+        }
+
+
+        .back-projects {
+
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            border-radius: 50px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-weight: 600;
+
+            transition: .3s;
+
+        }
+
+
+        .back-projects:hover {
+
+            background: #3b82f6;
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .flappy-page {
+
+                padding:
+                    130px 20px 60px;
+
+            }
+
+
+            .flappy-header h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .flappy-header p {
+
+                font-size: 16px;
+
+            }
+
+
+            .flappy-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .development-section {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .project-details {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .flappy-card,
+            .project-introduction,
+            .highlight-box,
+            .technology-card {
+
+                padding: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header>
+
+        <nav>
+
+            <a
+                href="../index.html"
+                class="logo"
+            >
+                Dom<span>.</span>
+            </a>
+
+
+            <ul>
+
+                <li>
+                    <a href="../index.html#home">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#about">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#certificates">
+                        Certificates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         PROJECT CONTENT
+    ========================================= -->
+
+    <main class="flappy-page">
+
+
+        <!-- PROJECT HEADER -->
+
+        <div class="flappy-header">
+
+            <span class="project-label">
+                Java Game Development
+            </span>
+
+            <h1>
+                Flappy Bird Game
+            </h1>
+
+            <p>
+                A Java-based recreation of the classic
+                Flappy Bird gameplay experience, developed
+                to practice programming logic, game loops,
+                collision detection, scoring, and
+                interactive controls.
+            </p>
+
+        </div>
+
+
+        <!-- PROJECT DEMO -->
+
+        <div class="flappy-video">
+
+            <video
+                controls
+                muted
+                loop
+                playsinline
+            >
+
+                <source
+                    src="../project_demo/FlappyBird.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support
+                the video tag.
+
+            </video>
+
+        </div>
+
+
+        <!-- PROJECT OVERVIEW -->
+
+        <div class="project-introduction">
+
+            <h2>
+                Project Overview
+            </h2>
+
+            <p>
+                Flappy Bird is a simple but challenging
+                arcade-style game where the player controls
+                a bird and attempts to navigate through
+                obstacles without colliding with them.
+            </p>
+
+            <p>
+                I created this project as a way to strengthen
+                my Java programming skills while learning
+                how programming concepts can be applied to
+                an interactive game environment.
+            </p>
+
+            <p>
+                Although the gameplay concept is simple,
+                the project required several systems to work
+                together, including player input, movement,
+                gravity, obstacle interaction, collision
+                detection, and score tracking.
+            </p>
+
+        </div>
+
+
+        <!-- MAIN INFORMATION -->
+
+        <div class="flappy-info">
+
+
+            <!-- WHAT I BUILT -->
+
+            <div class="flappy-card">
+
+                <h2>
+                    What I Built
+                </h2>
+
+                <p>
+                    I developed the core gameplay mechanics
+                    required for a playable Flappy Bird-style
+                    game using Java.
+                </p>
+
+                <p>
+                    The project focuses on creating a
+                    continuous gameplay loop where the
+                    player controls the bird while avoiding
+                    obstacles and attempting to achieve a
+                    higher score.
+                </p>
+
+                <p>
+                    I also worked with graphical assets and
+                    game logic to create a more recognizable
+                    arcade-game experience.
+                </p>
+
+            </div>
+
+
+            <!-- KEY FEATURES -->
+
+            <div class="flappy-card">
+
+                <h2>
+                    Key Features
+                </h2>
+
+                <ul class="feature-list">
+
+                    <li>
+                        Player-controlled bird movement
+                    </li>
+
+                    <li>
+                        Gravity-based falling movement
+                    </li>
+
+                    <li>
+                        Jump / flap interaction
+                    </li>
+
+                    <li>
+                        Obstacle-based gameplay
+                    </li>
+
+                    <li>
+                        Collision detection
+                    </li>
+
+                    <li>
+                        Score tracking
+                    </li>
+
+                    <li>
+                        Continuous game loop
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- DEVELOPMENT -->
+
+        <div class="development-section">
+
+
+            <div class="highlight-box">
+
+                <h2>
+                    Development Process
+                </h2>
+
+                <p>
+                    I started by creating the basic game
+                    window and player object. I then worked
+                    on the movement system and implemented
+                    gravity so that the bird would naturally
+                    fall when the player was not interacting.
+                </p>
+
+                <p>
+                    After establishing player movement, I
+                    added the obstacle system and collision
+                    logic. This allowed the game to detect
+                    when the bird interacted with an
+                    obstacle and respond accordingly.
+                </p>
+
+            </div>
+
+
+            <div class="highlight-box">
+
+                <h2>
+                    What I Learned
+                </h2>
+
+                <p>
+                    This project helped me better understand
+                    Java programming through a practical
+                    application rather than only working
+                    with console-based programs.
+                </p>
+
+                <p>
+                    I gained experience with game loops,
+                    object movement, collision detection,
+                    event handling, graphical assets, and
+                    organizing gameplay logic.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- TECHNOLOGIES -->
+
+        <div class="technology-card">
+
+            <h2>
+                Technologies & Concepts
+            </h2>
+
+            <div class="technology-tags">
+
+                <span>
+                    Java
+                </span>
+
+                <span>
+                    Object-Oriented Programming
+                </span>
+
+                <span>
+                    Game Loop
+                </span>
+
+                <span>
+                    Collision Detection
+                </span>
+
+                <span>
+                    Event Handling
+                </span>
+
+                <span>
+                    2D Graphics
+                </span>
+
+                <span>
+                    Game Physics
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT DETAILS -->
+
+        <div class="project-details">
+
+
+            <div class="detail-item">
+
+                <h3>
+                    CATEGORY
+                </h3>
+
+                <p>
+                    Game Development
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <h3>
+                    LANGUAGE
+                </h3>
+
+                <p>
+                    Java
+                </p>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <h3>
+                    PROJECT TYPE
+                </h3>
+
+                <p>
+                    2D Arcade Game
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BACK BUTTON -->
+
+        <div class="back-projects-container">
+
+            <a
+                href="../index.html#projects"
+                class="back-projects"
+            >
+                ← Back to Projects
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Domnic Gabriel Escalante.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

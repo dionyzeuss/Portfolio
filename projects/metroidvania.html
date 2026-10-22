@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>2D Metroidvania Game | Dom.</title>
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+    <style>
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .metroidvania-page {
+
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 150px 40px 80px;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .metroidvania-header {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+
+        }
+
+
+        .metroidvania-header .project-label {
+
+            display: inline-block;
+
+            color: #60a5fa;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .metroidvania-header h1 {
+
+            font-size: clamp(42px, 6vw, 65px);
+
+            margin-bottom: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #60a5fa,
+                    #06b6d4
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .metroidvania-header p {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            font-size: 18px;
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================================
+           VIDEO
+        ========================================= */
+
+        .metroidvania-video {
+
+            width: 100%;
+
+            margin: 0 auto 80px;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            border: 1px solid
+                rgba(255,255,255,.12);
+
+            background: #020617;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.5);
+
+        }
+
+
+        .metroidvania-video video {
+
+            display: block;
+
+            width: 100%;
+
+            max-height: 650px;
+
+            object-fit: contain;
+
+            background: #020617;
+
+        }
+
+
+        /* =========================================
+           SECTION HEADINGS
+        ========================================= */
+
+        .project-section-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .project-section-title span {
+
+            display: block;
+
+            color: #3b82f6;
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .project-section-title h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .project-section-title p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #8994a8;
+
+        }
+
+
+        /* =========================================
+           SCREENSHOT GALLERY
+        ========================================= */
+
+        .game-gallery {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 90px;
+
+        }
+
+
+        .game-screenshot {
+
+            position: relative;
+
+            height: 250px;
+
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            background: #020617;
+
+            cursor: pointer;
+
+            transition:
+                transform .35s ease,
+                border-color .35s ease,
+                box-shadow .35s ease;
+
+        }
+
+
+        .game-screenshot:nth-child(1) {
+
+            grid-column: span 2;
+
+            height: 320px;
+
+        }
+
+
+        .game-screenshot img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform .5s ease,
+                filter .5s ease;
+
+        }
+
+
+        .game-screenshot::after {
+
+            content: "VIEW IMAGE";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                rgba(2,6,23,.6);
+
+            color: #60a5fa;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            opacity: 0;
+
+            transition: .3s ease;
+
+        }
+
+
+        .game-screenshot:hover {
+
+            transform: translateY(-7px);
+
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.45);
+
+        }
+
+
+        .game-screenshot:hover img {
+
+            transform: scale(1.07);
+
+            filter: brightness(.65);
+
+        }
+
+
+        .game-screenshot:hover::after {
+
+            opacity: 1;
+
+        }
+
+
+        /* =========================================
+           IMAGE LIGHTBOX
+        ========================================= */
+
+        .game-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 5000;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                rgba(0,0,0,.94);
+
+        }
+
+
+        .game-modal.active {
+
+            display: flex;
+
+        }
+
+
+        .game-modal img {
+
+            max-width: 92%;
+
+            max-height: 88vh;
+
+            object-fit: contain;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.8);
+
+            animation:
+                imageZoom .3s ease;
+
+        }
+
+
+        .game-modal-close {
+
+            position: absolute;
+
+            top: 25px;
+
+            right: 40px;
+
+            color: white;
+
+            font-size: 45px;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+        }
+
+
+        .game-modal-close:hover {
+
+            color: #60a5fa;
+
+            transform: rotate(90deg);
+
+        }
+
+
+        @keyframes imageZoom {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(.8);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+        }
+
+
+        /* =========================================
+           INFORMATION
+        ========================================= */
+
+        .metroidvania-info {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr
+                1fr;
+
+            gap: 30px;
+
+            margin-bottom: 70px;
+
+        }
+
+
+        .metroidvania-card {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111827,
+                    #0b1120
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            transition: .3s;
+
+        }
+
+
+        .metroidvania-card:hover {
+
+            border-color:
+                rgba(59,130,246,.5);
+
+            transform:
+                translateY(-5px);
+
+        }
+
+
+        .metroidvania-card h2 {
+
+            color: #60a5fa;
+
+            font-size: 26px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .metroidvania-card p {
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =========================================
+           FEATURES
+        ========================================= */
+
+        .features-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 70px;
+
+        }
+
+
+        .feature-card {
+
+            padding: 30px;
+
+            background:
+                rgba(15,23,42,.8);
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 18px;
+
+            transition: .3s;
+
+        }
+
+
+        .feature-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                #3b82f6;
+
+        }
+
+
+        .feature-icon {
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .feature-card h3 {
+
+            color: #60a5fa;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .feature-card p {
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================
+           TECHNOLOGIES
+        ========================================= */
+
+        .technology-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+        }
+
+
+        .technology-tags span {
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37,99,235,.1);
+
+            border:
+                1px solid
+                rgba(59,130,246,.4);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
+        .back-projects-container {
+
+            text-align: center;
+
+            margin-top: 60px;
+
+        }
+
+
+        .back-projects {
+
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            border-radius: 50px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-weight: 600;
+
+            transition: .3s;
+
+        }
+
+
+        .back-projects:hover {
+
+            background: #3b82f6;
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(37,99,235,.3);
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media(max-width:900px) {
+
+            .metroidvania-page {
+
+                padding:
+                    130px 20px 60px;
+
+            }
+
+
+            .game-gallery {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .game-screenshot,
+            .game-screenshot:nth-child(1) {
+
+                grid-column: span 1;
+
+                height: 250px;
+
+            }
+
+
+            .metroidvania-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .features-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .metroidvania-header h1 {
+
+                font-size: 38px;
+
+            }
+
+
+            .metroidvania-header p {
+
+                font-size: 16px;
+
+            }
+
+
+            .metroidvania-video {
+
+                border-radius: 15px;
+
+            }
+
+
+            .metroidvania-card {
+
+                padding: 25px;
+
+            }
+
+
+            .game-modal {
+
+                padding: 15px;
+
+            }
+
+
+            .game-modal img {
+
+                max-width: 96%;
+
+            }
+
+
+            .game-modal-close {
+
+                right: 20px;
+
+                top: 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <header>
+
+        <nav>
+
+            <a
+                href="../index.html"
+                class="logo"
+            >
+                Dom<span>.</span>
+            </a>
+
+
+            <ul>
+
+                <li>
+                    <a href="../index.html#home">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#about">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#certificates">
+                        Certificates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main class="metroidvania-page">
+
+
+        <!-- =====================================
+             PROJECT HEADER
+        ===================================== -->
+
+        <div class="metroidvania-header">
+
+            <span class="project-label">
+                GAME DEVELOPMENT PROJECT
+            </span>
+
+            <h1>
+                2D Metroidvania Game
+            </h1>
+
+            <p>
+                A 2D action-platformer developed with
+                Godot Engine and GDScript, featuring
+                player movement, physics, animation,
+                visual effects, and exploration-based
+                gameplay.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             GAMEPLAY VIDEO
+        ===================================== -->
+
+        <div class="metroidvania-video">
+
+            <video
+                controls
+                muted
+                loop
+                playsinline
+            >
+
+                <source
+                    src="../project_demo/Metroidvania.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support
+                the video tag.
+
+            </video>
+
+        </div>
+
+
+
+
+        <!-- =====================================
+             IMAGE POPUP
+        ===================================== -->
+
+        <div
+            id="gameModal"
+            class="game-modal"
+        >
+
+            <span
+                class="game-modal-close"
+                onclick="closeGameImage()"
+            >
+                &times;
+            </span>
+
+
+            <img
+                id="gameModalImage"
+                src=""
+                alt="Game screenshot"
+            >
+
+        </div>
+
+
+        <!-- =====================================
+             ABOUT PROJECT
+        ===================================== -->
+
+        <div class="project-section-title">
+
+            <span>
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                Building the Game
+            </h2>
+
+        </div>
+
+
+        <div class="metroidvania-info">
+
+
+            <div class="metroidvania-card">
+
+                <h2>
+                    My Role
+                </h2>
+
+                <p>
+                    I developed this project as a game
+                    development exercise using the
+                    Godot Engine.
+                </p>
+
+                <p>
+                    The project gave me practical experience
+                    implementing a controllable 2D character,
+                    physics-based movement, animations,
+                    jumping, gravity, collision detection,
+                    and visual effects.
+                </p>
+
+                <p>
+                    I also worked with Godot's scene system,
+                    nodes, signals, and GDScript to organize
+                    the game's functionality.
+                </p>
+
+            </div>
+
+
+            <div class="metroidvania-card">
+
+                <h2>
+                    Technologies
+                </h2>
+
+                <div class="technology-tags">
+
+                    <span>
+                        Godot Engine
+                    </span>
+
+                    <span>
+                        GDScript
+                    </span>
+
+                    <span>
+                        CharacterBody2D
+                    </span>
+
+                    <span>
+                        AnimatedSprite2D
+                    </span>
+
+                    <span>
+                        2D Physics
+                    </span>
+
+                    <span>
+                        Game Development
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             GAME FEATURES
+        ===================================== -->
+
+        <div class="project-section-title">
+
+            <span>
+                DEVELOPMENT
+            </span>
+
+            <h2>
+                Key Features
+            </h2>
+
+            <p>
+                Some of the gameplay and programming
+                concepts implemented in the project.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎮
+                </div>
+
+                <h3>
+                    Character Controller
+                </h3>
+
+                <p>
+                    Implemented horizontal movement,
+                    jumping, gravity, and floor detection
+                    using CharacterBody2D.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏃
+                </div>
+
+                <h3>
+                    Character Animation
+                </h3>
+
+                <p>
+                    Used AnimatedSprite2D to switch
+                    between idle, running, and jumping
+                    animations based on player movement.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Visual Effects
+                </h3>
+
+                <p>
+                    Added visual effects for actions
+                    such as jumping and landing to make
+                    gameplay feel more responsive.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             BACK
+        ===================================== -->
+
+        <div class="back-projects-container">
+
+            <a
+                href="../index.html#projects"
+                class="back-projects"
+            >
+                ← Back to Projects
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Domnic Gabriel Escalante.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT FOR IMAGE GALLERY
+    ========================================= -->
+
+    <script>
+
+        const gameImages = {
+
+            game1:
+                "../project_demo/metroidvania-1.png",
+
+            game2:
+                "../project_demo/metroidvania-2.png",
+
+            game3:
+                "../project_demo/metroidvania-3.png",
+
+            game4:
+                "../project_demo/metroidvania-4.png",
+
+            game5:
+                "../project_demo/metroidvania-5.png",
+
+            game6:
+                "../project_demo/metroidvania-6.png"
+
+        };
+
+
+        const gameModal =
+            document.getElementById(
+                "gameModal"
+            );
+
+
+        const gameModalImage =
+            document.getElementById(
+                "gameModalImage"
+            );
+
+
+        function openGameImage(image) {
+
+            gameModalImage.src =
+                gameImages[image];
+
+            gameModal.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+        function closeGameImage() {
+
+            gameModal.classList.remove(
+                "active"
+            );
+
+            gameModalImage.src = "";
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        /* Close when clicking outside */
+
+        gameModal.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    gameModal
+                ) {
+
+                    closeGameImage();
+
+                }
+
+            }
+        );
+
+
+        /* Close with ESC */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeGameImage();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

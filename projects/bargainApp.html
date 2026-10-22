@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bargain App | Dom.</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* =========================================
+           TECHSTORE PROJECT PAGE
+        ========================================= */
+
+        .techstore-page {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 150px 40px 80px;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .techstore-header {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+
+        }
+
+
+        .project-label {
+
+            display: inline-block;
+
+            padding: 7px 16px;
+
+            margin-bottom: 18px;
+
+            border-radius: 30px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37, 99, 235, 0.12);
+
+            border:
+                1px solid rgba(59, 130, 246, 0.35);
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .techstore-header h1 {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+            color: #60a5fa;
+
+            line-height: 1.1;
+
+        }
+
+
+        .techstore-header p {
+
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            font-size: 18px;
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+        }
+
+
+
+
+        /* =========================================
+   BARGAIN APP DEMO VIDEO
+========================================= */
+
+        .bargainApp-video {
+            display: block;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            background: #020617;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .bargainApp-video video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: contain;
+            background: #020617;
+        }
+
+        /* Responsive video */
+        @media (max-width: 768px) {
+            .bargainApp-video {
+                margin-bottom: 30px;
+                border-radius: 10px;
+            }
+        }
+
+
+
+
+        /* =========================================
+           PROJECT INTRODUCTION
+        ========================================= */
+
+        .project-introduction {
+
+            padding: 35px;
+
+            margin-bottom: 40px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    #111827,
+                    #0b1120);
+
+            border:
+                1px solid rgba(255, 255, 255, .1);
+
+        }
+
+
+        .project-introduction h2 {
+
+            color: #60a5fa;
+
+            font-size: 28px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .project-introduction p {
+
+            color: #bfc8d8;
+
+            line-height: 1.9;
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .project-introduction p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           INFORMATION GRID
+        ========================================= */
+
+        .techstore-info {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr;
+
+            gap: 30px;
+
+        }
+
+
+        .bargainApp-card {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    #111827,
+                    #0b1120);
+
+            border:
+                1px solid rgba(255, 255, 255, .1);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease;
+
+        }
+
+
+        .techstore-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(96, 165, 250, .35);
+
+        }
+
+
+        .bargainApp-card h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .bargainApp-card p {
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .bargainApp-card p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           FEATURE LIST
+        ========================================= */
+
+        .feature-list {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+
+        }
+
+
+        .feature-list li {
+
+            position: relative;
+
+            padding-left: 28px;
+
+            margin-bottom: 15px;
+
+            color: #bfc8d8;
+
+            line-height: 1.7;
+
+        }
+
+
+        .feature-list li::before {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 0;
+
+            color: #60a5fa;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           DEVELOPMENT
+        ========================================= */
+
+        .development-section {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+
+        }
+
+
+        .highlight-box {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(37, 99, 235, .12),
+                    rgba(15, 23, 42, .8));
+
+            border:
+                1px solid rgba(59, 130, 246, .25);
+
+        }
+
+
+        .highlight-box h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .highlight-box p {
+
+            color: #bfc8d8;
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .highlight-box p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           TECHNOLOGIES
+        ========================================= */
+
+        .technology-card {
+
+            margin-top: 30px;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    #111827,
+                    #0b1120);
+
+            border:
+                1px solid rgba(255, 255, 255, .1);
+
+        }
+
+
+        .technology-card h2 {
+
+            color: #60a5fa;
+
+            font-size: 27px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .technology-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+        }
+
+
+        .technology-tags span {
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37, 99, 235, .1);
+
+            border:
+                1px solid rgba(59, 130, 246, .4);
+
+            font-size: 13px;
+
+            transition: .3s;
+
+        }
+
+
+        .technology-tags span:hover {
+
+            background:
+                rgba(37, 130, 246, .2);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =========================================
+           PROJECT DETAILS
+        ========================================= */
+
+        .project-details {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .detail-item {
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                #0b1120;
+
+            border:
+                1px solid rgba(255, 255, 255, .08);
+
+        }
+
+
+        .detail-item h3 {
+
+            color: #60a5fa;
+
+            font-size: 15px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .detail-item p {
+
+            color: #d1d5db;
+
+            font-size: 14px;
+
+            margin: 0;
+
+        }
+
+
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
+        .back-projects-container {
+
+            text-align: center;
+
+            margin-top: 55px;
+
+        }
+
+
+        .back-projects {
+
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            border-radius: 50px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-weight: 600;
+
+            transition: .3s;
+
+        }
+
+
+        .back-projects:hover {
+
+            background: #3b82f6;
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .techstore-page {
+
+                padding:
+                    130px 20px 60px;
+
+            }
+
+
+            .techstore-header h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .techstore-header p {
+
+                font-size: 16px;
+
+            }
+
+
+            .techstore-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .development-section {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .project-details {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .techstore-card,
+            .project-introduction,
+            .highlight-box,
+            .technology-card {
+
+                padding: 25px;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Dom<span>.</span></a>
+            <ul>
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#certificates">Certificates</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    </header>
+    <main class="techstore-page">
+        <div class="techstore-header">
+            <span class="project-label">Application Development Project</span>
+            <h1>Bargain App</h1>
+            <p>A project detail page for the Bargain App, following the same visual layout as the TechStore project
+                page.</p>
+        </div>
+
+
+        <!-- =====================================
+     BARGAIN APP DEMO VIDEO
+===================================== -->
+
+        <div class="bargainApp-video">
+            <video controls preload="metadata" playsinline>
+                <source src="../project_demo/bargainApp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+
+
+        <div class="project-introduction">
+            <h2>Project Overview</h2>
+            <p>This page is structured to explain the Bargain App's purpose, functionality, development process, and
+                technology stack.</p>
+            <p>The app's specific features and implementation details have not been provided yet, so the sections below
+                are placeholders to avoid claiming features that may not exist.</p>
+        </div>
+
+        <div class="techstore-info">
+            <div class="techstore-card">
+                <h2>What I Built</h2>
+                <p>Describe the app's actual purpose, the screens you created, and the main user tasks it supports.</p>
+                <p>Update this section when the app's features and technology stack are confirmed.</p>
+            </div>
+            <div class="techstore-card">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li>Add the app's main feature</li>
+                    <li>Describe the primary user workflow</li>
+                    <li>Describe the user interface</li>
+                    <li>Add search or listing features only if implemented</li>
+                    <li>Add account or data storage features only if implemented</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="development-section">
+            <div class="highlight-box">
+                <h2>Development Process</h2>
+                <p>Describe how you planned, designed, and implemented the actual app.</p>
+                <p>Replace this placeholder with the development steps you followed.</p>
+            </div>
+            <div class="highlight-box">
+                <h2>What I Learned</h2>
+                <p>Describe the programming concepts, interface design, or problem-solving skills you gained.</p>
+                <p>Keep this section aligned with what you actually built.</p>
+            </div>
+        </div>
+
+        <div class="technology-card">
+            <h2>Technologies &amp; Tools</h2>
+            <div class="technology-tags">
+                <span>Update technology stack</span>
+                <span>Application Development</span>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-item">
+                <h3>CATEGORY</h3>
+                <p>Application Development</p>
+            </div>
+            <div class="detail-item">
+                <h3>TECHNOLOGY</h3>
+                <p>To be confirmed</p>
+            </div>
+            <div class="detail-item">
+                <h3>PROJECT TYPE</h3>
+                <p>Bargain App</p>
+            </div>
+        </div>
+
+
+        <div class="back-projects-container">
+            <a href="../index.html#projects" class="back-projects">← Back to Projects</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 Domnic Gabriel Escalante. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
