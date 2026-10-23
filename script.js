@@ -160,7 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // =====================================================
   // 4. BOOT-UP INTRO
-  // Runs once per browser session when sessionStorage works.
+  // Plays on every page load.
+  // Total duration: approximately 5 seconds.
   // =====================================================
 
   const bootScreen = document.getElementById("boot-screen");
@@ -170,107 +171,106 @@ document.addEventListener("DOMContentLoaded", () => {
   const skipBootButton = document.getElementById("skip-boot");
 
   if (bootScreen) {
-    let alreadyBooted = false;
+    const messages = [
+      "INITIALIZING SYSTEM........",
+      "LOADING PORTFOLIO MODULES...",
+      "CHECKING PROJECT DATABASE...",
+      "SYSTEM ONLINE ............ OK",
+    ];
 
-    try {
-      alreadyBooted = sessionStorage.getItem("portfolio-booted") === "1";
-    } catch {
-      // Storage may be disabled by the browser.
+    let messageIndex = 0;
+    let bootFinished = false;
+    const timers = new Set();
+
+    function scheduleBoot(callback, delay) {
+      const timer = window.setTimeout(() => {
+        timers.delete(timer);
+        callback();
+      }, delay);
+
+      timers.add(timer);
     }
 
-    if (alreadyBooted || reduceMotion) {
-      bootScreen.classList.remove("active", "boot-exit");
-      bootScreen.style.display = "none";
+    function finishBoot() {
+      if (bootFinished) return;
+
+      bootFinished = true;
+
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers.clear();
+
+      if (bootProgress) {
+        bootProgress.style.width = "100%";
+      }
+
+      if (bootStatus) {
+        bootStatus.textContent = "SYSTEM ONLINE // WELCOME";
+      }
+
+      bootScreen.classList.add("boot-exit");
+
+      scheduleBoot(
+        () => {
+          bootScreen.classList.remove("active", "boot-exit");
+          bootScreen.style.display = "none";
+          document.body.style.overflow = "";
+        },
+        reduceMotion ? 0 : 500,
+      );
+    }
+
+    function showNextBootMessage() {
+      if (bootFinished) return;
+
+      if (messageIndex >= messages.length) {
+        // Finish at approximately 4.5 seconds.
+        scheduleBoot(finishBoot, 500);
+        return;
+      }
+
+      if (bootLog) {
+        const line = document.createElement("p");
+        line.textContent = `> ${messages[messageIndex]}`;
+
+        if (messageIndex === messages.length - 1) {
+          line.classList.add("boot-ok");
+        }
+
+        bootLog.appendChild(line);
+      }
+
+      messageIndex++;
+
+      if (bootProgress) {
+        bootProgress.style.width = `${(messageIndex / messages.length) * 100}%`;
+      }
+
+      // Four messages, approximately one second apart.
+      scheduleBoot(showNextBootMessage, 1000);
+    }
+
+    // Reset the boot screen on every page load.
+    bootScreen.classList.remove("boot-exit");
+    bootScreen.classList.add("active");
+    bootScreen.style.display = "";
+
+    if (bootLog) bootLog.replaceChildren();
+    if (bootProgress) bootProgress.style.width = "0%";
+
+    if (bootStatus) {
+      bootStatus.textContent = "INITIALIZING...";
+    }
+
+    if (reduceMotion) {
+      finishBoot();
     } else {
-      const messages = [
-        "INITIALIZING SYSTEM........",
-        "LOADING PORTFOLIO MODULES...",
-        "CHECKING PROJECT DATABASE...",
-        "SYSTEM ONLINE ............ OK",
-      ];
-
-      let messageIndex = 0;
-      let bootFinished = false;
-      const timers = new Set();
-
-      function scheduleBoot(callback, delay) {
-        const timer = window.setTimeout(() => {
-          timers.delete(timer);
-          callback();
-        }, delay);
-
-        timers.add(timer);
-      }
-
-      function finishBoot() {
-        if (bootFinished) return;
-
-        bootFinished = true;
-
-        timers.forEach((timer) => window.clearTimeout(timer));
-        timers.clear();
-
-        if (bootProgress) bootProgress.style.width = "100%";
-
-        if (bootStatus) {
-          bootStatus.textContent = "SYSTEM ONLINE // WELCOME";
-        }
-
-        try {
-          sessionStorage.setItem("portfolio-booted", "1");
-        } catch {
-          // Continue even if session storage is unavailable.
-        }
-
-        bootScreen.classList.add("boot-exit");
-
-        scheduleBoot(
-          () => {
-            bootScreen.classList.remove("active");
-            bootScreen.style.display = "none";
-            document.body.style.overflow = "";
-          },
-          reduceMotion ? 0 : 650,
-        );
-      }
-
-      function showNextBootMessage() {
-        if (bootFinished) return;
-
-        if (messageIndex >= messages.length) {
-          scheduleBoot(finishBoot, 350);
-          return;
-        }
-
-        if (bootLog) {
-          const line = document.createElement("p");
-          line.textContent = `> ${messages[messageIndex]}`;
-
-          if (messageIndex === messages.length - 1) {
-            line.classList.add("boot-ok");
-          }
-
-          bootLog.appendChild(line);
-        }
-
-        messageIndex++;
-
-        if (bootProgress) {
-          bootProgress.style.width = `${(messageIndex / messages.length) * 100}%`;
-        }
-
-        scheduleBoot(showNextBootMessage, 550);
-      }
-
       document.body.style.overflow = "hidden";
 
       skipBootButton?.addEventListener("click", finishBoot);
 
-      bootScreen.classList.add("active");
       showNextBootMessage();
     }
   }
-
   // =====================================================
   // 5. PROJECT CARD NAVIGATION
   // Uses event delegation so cloned carousel cards also work.
