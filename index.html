@@ -2,84 +2,80 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d18">
+    <meta name="description"
+        content="Portfolio of Domnic Gabriel Escalante, BSIT graduate focused on IT support, software development, web development, networking, and game development.">
 
     <title>Domnic Gabriel Escalante | Portfolio</title>
 
     <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
 
+    <!-- ================= COMPUTER BOOT-UP INTRO ================= -->
+    <div id="boot-screen" class="boot-screen">
+        <div class="boot-terminal">
+            <div class="boot-header">
+                <span class="boot-dot red"></span>
+                <span class="boot-dot yellow"></span>
+                <span class="boot-dot green"></span>
+                <span class="boot-title">DOMNIC'S OS // SYSTEM BOOT</span>
+            </div>
+
+            <div class="boot-content">
+                <p class="boot-brand">DOMNIC'S<span>_</span>OS</p>
+                <p class="boot-subtitle">IT SUPPORT &amp; DEVELOPER PORTFOLIO</p>
+
+                <div id="boot-log" class="boot-log" aria-live="polite"></div>
+
+                <div class="boot-progress">
+                    <div id="boot-progress-bar"></div>
+                </div>
+
+                <p id="boot-status" class="boot-status">PLEASE WAIT...</p>
+
+                <button id="skip-boot" class="skip-boot" type="button">
+                    SKIP INTRO &gt;&gt;
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVIGATION ================= -->
-
     <header>
-
-        <nav>
-
+        <nav aria-label="Main navigation">
             <h2 class="logo">DG<span>.</span></h2>
 
-            <ul>
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="nav-menu">
+                <span aria-hidden="true">&#9776;</span>
+            </button>
 
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-
-                <li>
-                    <a href="#certificates">Certificates</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-
         </nav>
-
     </header>
 
-
     <!-- ================= HERO ================= -->
-
     <section id="home" class="hero">
-
-        <!-- Background Video -->
-
-        <video autoplay muted loop playsinline class="background-video">
-
+        <video autoplay muted loop playsinline class="background-video" aria-hidden="true">
             <source src="hero_bg_video.mp4" type="video/mp4">
-
             Your browser does not support the video tag.
-
         </video>
-
-
-        <!-- Dark Overlay -->
 
         <div class="overlay"></div>
 
-
-        <!-- Hero Content -->
-
         <div class="hero-content">
-
             <div class="hero-text">
-
-                <span class="hero-tag">
-                    IT GRADUATE • SOFTWARE DEVELOPMENT
-                </span>
+                <span class="hero-tag">IT GRADUATE • SOFTWARE DEVELOPMENT</span>
 
                 <h3>Hello, I'm</h3>
 
@@ -96,68 +92,47 @@
                     Web Developer
                 </p>
 
-
                 <div class="hero-buttons">
-
-                    <button id="resumeBtn">
+                    <button id="resumeBtn" type="button" data-resume>
                         Download Resume
                     </button>
 
                     <a href="#projects" class="view-projects">
                         View Projects
                     </a>
-
                 </div>
-
             </div>
-
-
-            <!-- Profile -->
 
             <div class="hero-image">
-
                 <div class="image-glow"></div>
-
                 <img src="Formal.png" alt="Domnic Gabriel Escalante">
-
             </div>
-
         </div>
-
     </section>
 
-
-
     <!-- ================= ABOUT ================= -->
-
     <section id="about" class="about-section">
-
         <div class="section-title">
-
             <p>WHO I AM</p>
-
             <h2>About Me</h2>
-
         </div>
 
+        <div class="ab-wrap">
 
-        <div class="about-container">
-
-            <div class="about-left">
-
-                <span class="small-title">
-                    ABOUT ME
-                </span>
+            <!-- Main story -->
+            <div class="ab-main">
+                <span class="ab-badge"><i></i> Open to opportunities</span>
 
                 <h3>
-                    Hi, I'm Domnic Gabriel Escalante 👋
+                    Hi, I'm Domnic Gabriel Escalante
+                    <span class="ab-wave" aria-hidden="true">👋</span>
                 </h3>
 
                 <p>
                     I am a Bachelor of Science in Information Technology
-                    graduate passionate about software development,
-                    web technologies, networking, and creating digital
-                    solutions that solve real-world problems.
+                    graduate passionate about <strong>software development</strong>,
+                    <strong>web technologies</strong>, <strong>networking</strong>,
+                    and creating digital solutions that solve real-world problems.
                 </p>
 
                 <p>
@@ -166,1058 +141,705 @@
                     practices in software engineering.
                 </p>
 
+                <div class="ab-actions">
+                    <a class="ab-btn primary" href="DOMNIC_GABRIEL_ESCALANTE_Resume.pdf" download>
+                        Download Resume
+                    </a>
+
+                    <a class="ab-btn" href="#contact">Let's talk</a>
+                </div>
+
+                <div class="ab-stats">
+                    <div><strong data-count="5">5</strong><span>Projects</span></div>
+                    <div><strong data-count="9">9</strong><span>Certificates</span></div>
+                    <div><strong data-count="4">4</strong><span>Training areas</span></div>
+                </div>
             </div>
 
-
-            <!-- About Cards -->
-
-            <div class="about-info">
-
-                <div class="info-card">
-
-                    <span class="info-icon">🎓</span>
-
+            <!-- Information cards -->
+            <div class="ab-cards">
+                <article class="ab-card wide">
+                    <span class="ab-icon">🎓</span>
                     <div>
-                        <h4>Degree</h4>
-                        <p>BS Information Technology</p>
+                        <span class="ab-label">Degree</span>
+                        <h4>BS Information Technology</h4>
                     </div>
+                </article>
 
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-icon">💼</span>
-
+                <article class="ab-card">
+                    <span class="ab-icon">💼</span>
                     <div>
-                        <h4>Experience</h4>
-                        <p>IT Support & Web Development</p>
+                        <span class="ab-label">Experience</span>
+                        <h4>IT Support &amp; Web Development</h4>
                     </div>
+                </article>
 
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-icon">🌎</span>
-
+                <article class="ab-card">
+                    <span class="ab-icon">🌎</span>
                     <div>
-                        <h4>Location</h4>
-                        <p>Philippines</p>
+                        <span class="ab-label">Location</span>
+                        <h4>Philippines</h4>
                     </div>
+                </article>
 
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-icon">🚀</span>
-
+                <article class="ab-card wide goal">
+                    <span class="ab-icon">🚀</span>
                     <div>
-                        <h4>Goal</h4>
-                        <p>Software Engineer</p>
+                        <span class="ab-label">Goal</span>
+                        <h4>Software Engineer</h4>
                     </div>
-
-                </div>
-
+                </article>
             </div>
 
+            <!-- About gallery -->
+            <div class="abg-head">
+                <h3>Gallery</h3>
+                <p>Moments from graduation and my capstone project.</p>
+            </div>
+
+            <div class="ab-gallery" id="abGallery" tabindex="0" role="region" aria-roledescription="carousel"
+                aria-label="About me gallery">
+                <div class="abg-stage"></div>
+
+                <button class="abg-arrow prev" type="button" aria-label="Previous slide">
+                    &#8249;
+                </button>
+
+                <button class="abg-arrow next" type="button" aria-label="Next slide">
+                    &#8250;
+                </button>
+
+                <button class="abg-pill abg-toggle" type="button" aria-pressed="false">
+                    Pause
+                </button>
+
+                <button class="abg-pill abg-sound" type="button" hidden>
+                    Sound off
+                </button>
+
+                <div class="abg-bottom">
+                    <p class="abg-caption" aria-live="polite"></p>
+                    <div class="abg-dots"></div>
+                </div>
+            </div>
         </div>
-
     </section>
 
-
-
+    <!-- ================= PROJECTS ================= -->
     <section id="projects" class="projects-section">
-
         <div class="section-title">
-
             <p>MY WORK</p>
-
             <h2>Projects</h2>
-
             <span>
                 Some of the projects I've built while learning and developing
                 my skills.
             </span>
-
         </div>
 
+        <div class="projects-carousel">
+            <button id="project-prev" type="button" aria-label="Previous project">
+                &#8249;
+            </button>
 
-        <div class="projects-grid">
+            <div class="projects-viewport">
+                <div class="projects-grid">
 
+                    <!-- PROJECT 1: METROIDVANIA -->
+                    <article class="project">
+                        <video class="project-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="project_demo/Metroidvania.mp4" type="video/mp4">
+                        </video>
 
-            <!-- ===================================== -->
-            <!-- PROJECT 1 - METROIDVANIA -->
-            <!-- ===================================== -->
+                        <div class="project-overlay"></div>
 
-            <div class="project">
+                        <div class="project-content">
+                            <div class="project-number">01</div>
+                            <div class="project-icon">🎮</div>
 
-                <!-- Background Video -->
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="project_demo/Metroidvania.mp4" type="video/mp4">
+                            <h3>2D Metroidvania Game</h3>
 
-                    Your browser does not support the video tag.
-                </video>
+                            <p>
+                                A 2D Metroidvania game developed using Godot Engine
+                                and GDScript. Features player movement, jumping,
+                                animations, physics, and visual effects.
+                            </p>
 
+                            <div class="project-tech">
+                                <span>Godot</span>
+                                <span>GDScript</span>
+                                <span>2D Physics</span>
+                            </div>
 
-                <!-- Dark Overlay -->
-                <div class="project-overlay"></div>
+                            <a href="https://github.com/dionyzeuss/Metroidvania" target="_blank"
+                                rel="noopener noreferrer">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </article>
 
+                    <!-- PROJECT 2: TECHSTOREPH -->
+                    <article class="project">
+                        <video class="project-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="project_demo/Techstore.mp4" type="video/mp4">
+                        </video>
 
-                <!-- Project Content -->
-                <div class="project-content">
+                        <div class="project-overlay"></div>
 
-                    <div class="project-number">
-                        01
-                    </div>
+                        <div class="project-content">
+                            <div class="project-number">02</div>
+                            <div class="project-icon">🛒</div>
 
+                            <h3>TechStorePH</h3>
 
-                    <div class="project-icon">
-                        🎮
-                    </div>
+                            <p>
+                                Computer parts e-commerce website with
+                                authentication and shopping cart functionality.
+                            </p>
 
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>Prisma</span>
+                                <span>Next.js</span>
+                                <span>React.js</span>
+                                <span>Tailwind</span>
+                            </div>
 
-                    <h3>
-                        2D Metroidvania Game
-                    </h3>
+                            <a href="https://github.com/dionyzeuss/TechStorePH" target="_blank"
+                                rel="noopener noreferrer">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </article>
 
+                    <!-- PROJECT 3: JAVA FLAPPY BIRD -->
+                    <article class="project">
+                        <video class="project-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="project_demo/FlappyBird.mp4" type="video/mp4">
+                        </video>
 
-                    <p>
-                        A 2D Metroidvania game developed using
-                        Godot Engine and GDScript. Features
-                        player movement, jumping, animations,
-                        physics, and visual effects.
-                    </p>
+                        <div class="project-overlay"></div>
 
+                        <div class="project-content">
+                            <div class="project-number">03</div>
+                            <div class="project-icon">🐦</div>
 
-                    <div class="project-tech">
+                            <h3>Java Flappy Bird</h3>
 
-                        <span>Godot</span>
-                        <span>GDScript</span>
-                        <span>2D Physics</span>
+                            <p>
+                                A Flappy Bird game created using Java Swing
+                                while applying object-oriented programming concepts.
+                            </p>
 
-                    </div>
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Swing</span>
+                                <span>OOP</span>
+                            </div>
 
+                            <a href="https://github.com/dionyzeuss/FlappyBird" target="_blank"
+                                rel="noopener noreferrer">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </article>
 
-                    <a href="https://github.com/dionyzeuss/Metroidvania" target="_blank" rel="noopener noreferrer"
-                        onclick="event.stopPropagation()">
-                        View on GitHub
-                    </a>
+                    <!-- PROJECT 4: IT SUPPORT TICKETING SYSTEM -->
+                    <article class="project">
+                        <video class="project-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="project_demo/ticketingSystem.mp4" type="video/mp4">
+                        </video>
+
+                        <div class="project-overlay"></div>
+
+                        <div class="project-content">
+                            <div class="project-number">04</div>
+                            <div class="project-icon">🎫</div>
+
+                            <h3>IT Support Ticketing System</h3>
+
+                            <p>
+                                A web-based ticket management system that lets clients
+                                submit IT support requests and track ticket progress,
+                                while IT staff manage tickets, priorities, and assignments.
+                            </p>
+
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>Next.js</span>
+                                <span>Prisma</span>
+                                <span>MariaDB</span>
+                            </div>
+
+                            <a href="https://github.com/dionyzeuss/Ticketing-System" target="_blank"
+                                rel="noopener noreferrer">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 5: BARGAIN APP -->
+                    <article class="project">
+                        <video class="project-video" autoplay muted loop playsinline preload="metadata">
+                            <source src="project_demo/bargainApp.mp4" type="video/mp4">
+                        </video>
+
+                        <div class="project-overlay"></div>
+
+                        <div class="project-content">
+                            <div class="project-number">05</div>
+                            <div class="project-icon">🏷️</div>
+
+                            <h3>Bargain App</h3>
+
+                            <p>
+                                A bargain-focused application. Add a description
+                                of its main features here so visitors can understand
+                                what the app does.
+                            </p>
+
+                            <div class="project-tech">
+                                <span>Bargain App</span>
+                                <span>Application Development</span>
+                            </div>
+
+                            <a href="https://github.com/dionyzeuss/BargainApp" target="_blank"
+                                rel="noopener noreferrer">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </article>
 
                 </div>
-
             </div>
 
-
-
-            <!-- ===================================== -->
-            <!-- PROJECT 2 - TECHSTOREPH -->
-            <!-- ===================================== -->
-
-            <div class="project">
-
-                <!-- Background Video -->
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="project_demo/Techstore.mp4" type="video/mp4">
-
-                    Your browser does not support the video tag.
-                </video>
-
-
-                <!-- Dark Overlay -->
-                <div class="project-overlay"></div>
-
-
-                <!-- Project Content -->
-                <div class="project-content">
-
-                    <div class="project-number">
-                        02
-                    </div>
-
-
-                    <div class="project-icon">
-                        🛒
-                    </div>
-
-
-                    <h3>
-                        TechStorePH
-                    </h3>
-
-
-                    <p>
-                        Computer parts e-commerce website with
-                        authentication and shopping cart
-                        functionality.
-                    </p>
-
-
-                    <div class="project-tech">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Prisma</span>
-                        <span>Next.js</span>
-                        <span>React.js</span>
-                        <span>Tailwind</span>
-
-                    </div>
-
-                    <a href="https://github.com/dionyzeuss/TechStorePH" target="_blank" rel="noopener noreferrer"
-                        onclick="event.stopPropagation()">
-                        View on GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ===================================== -->
-            <!-- PROJECT 3 - JAVA FLAPPY BIRD -->
-            <!-- ===================================== -->
-
-            <div class="project">
-
-                <!-- Background Video -->
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="project_demo/FlappyBird.mp4" type="video/mp4">
-
-                    Your browser does not support the video tag.
-                </video>
-
-
-                <!-- Dark Overlay -->
-                <div class="project-overlay"></div>
-
-
-                <!-- Project Content -->
-                <div class="project-content">
-
-                    <div class="project-number">
-                        03
-                    </div>
-
-
-                    <div class="project-icon">
-                        🐦
-                    </div>
-
-
-                    <h3>
-                        Java Flappy Bird
-                    </h3>
-
-
-                    <p>
-                        A Flappy Bird game created using Java Swing
-                        while applying object-oriented programming
-                        concepts.
-                    </p>
-
-
-                    <div class="project-tech">
-
-                        <span>Java</span>
-                        <span>Swing</span>
-                        <span>OOP</span>
-
-                    </div>
-
-                    <a href="https://github.com/dionyzeuss/FlappyBird" target="_blank" rel="noopener noreferrer"
-                        onclick="event.stopPropagation()">
-                        View on GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- ===================================== -->
-            <!-- PROJECT 4 - IT SUPPORT TICKETING SYSTEM -->
-            <!-- ===================================== -->
-
-            <div class="project">
-
-                <!-- Background Video -->
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="project_demo/ticketingSystem.mp4" type="video/mp4">
-
-                    Your browser does not support the video tag.
-                </video>
-
-
-                <div class="project-overlay"></div>
-
-                <div class="project-content">
-
-                    <div class="project-number">04</div>
-
-                    <div class="project-icon">🎫</div>
-
-                    <h3>IT Support Ticketing System</h3>
-
-                    <p>
-                        A web-based ticket management system that lets clients
-                        submit IT support requests and track ticket progress,
-                        while IT staff manage tickets, priorities, and assignments.
-                    </p>
-
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Next.js</span>
-                        <span>Prisma</span>
-                        <span>MariaDB</span>
-                    </div>
-
-                    <a href="https://github.com/dionyzeuss/Ticketing-System" target="_blank" rel="noopener noreferrer"
-                        onclick="event.stopPropagation()">
-                        View on GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- ===================================== -->
-            <!-- PROJECT 5 - BARGAIN APP -->
-            <!-- ===================================== -->
-
-            <div class="project">
-
-                <!-- Background Video -->
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="project_demo/bargainApp.mp4" type="video/mp4">
-
-                    Your browser does not support the video tag.
-                </video>
-
-                <div class="project-overlay"></div>
-
-                <div class="project-content">
-
-                    <div class="project-number">05</div>
-
-                    <div class="project-icon">🏷️</div>
-
-                    <h3>Bargain App</h3>
-
-                    <p>
-                        A bargain-focused application. Add a short description
-                        of its main features here so visitors can understand
-                        what the app does.
-                    </p>
-
-                    <div class="project-tech">
-                        <span>Bargain App</span>
-                        <span>Application Development</span>
-                    </div>
-
-                    <a href="https://github.com/dionyzeuss/BargainApp" target="_blank" rel="noopener noreferrer"
-                        onclick="event.stopPropagation()">
-                        View on GitHub
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
+            <button id="project-next" type="button" aria-label="Next project">
+                &#8250;
+            </button>
         </div>
 
+        <div id="project-dots" aria-label="Project navigation"></div>
+        <div id="project-counter" aria-live="polite"></div>
     </section>
 
-
-
-    <!-- =========================
-     CERTIFICATES SECTION
-========================= -->
-
+    <!-- ================= CERTIFICATES ================= -->
     <section id="certificates" class="certificates-section">
-
         <div class="section-title">
-
             <p>CREDENTIALS</p>
-
-            <h2>Certificates</h2>
-
+            <h2>Certifications &amp; Training</h2>
             <span>
-                Professional certifications and training programs
-                I've completed throughout my IT journey.
+                Technical knowledge, practical skills, and continuous learning
+                throughout my IT journey.
             </span>
-
         </div>
 
+        <div class="credentials-container">
 
-        <div class="certificates-grid">
+            <!-- FEATURED CERTIFICATE -->
+            <article class="featured-credential">
+                <div class="featured-badge">
+                    <span class="status-dot"></span>
+                    FEATURED CERTIFICATION
+                </div>
 
+                <div class="featured-content">
+                    <div class="featured-info">
+                        <span class="credential-category">CYBERSECURITY</span>
 
-            <!-- =========================
-             CERTIFICATE 1
-        ========================= -->
+                        <h3>Fortinet Certified Associate in Cybersecurity</h3>
 
-            <div class="certificate-card">
+                        <p>
+                            Cybersecurity certification covering fundamental
+                            security concepts and Fortinet technologies.
+                        </p>
 
-                <div class="certificate-image" onclick="openCertificate('certificates/ECWP.png')">
+                        <div class="certificate-tags">
+                            <span>Fortinet</span>
+                            <span>Cybersecurity</span>
+                            <span>Security</span>
+                        </div>
 
-                    <img src="certificates/ECWP.png" alt="EnGenius Certified Wireless Professional">
+                        <button class="credential-view-button" type="button" data-certificate="certificates/FCAC.png"
+                            data-title="Fortinet Certified Associate in Cybersecurity">
+                            View Certificate <span aria-hidden="true">&#8599;</span>
+                        </button>
+                    </div>
 
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
+                    <button class="featured-image-button" type="button" data-certificate="certificates/FCAC.png"
+                        data-title="Fortinet Certified Associate in Cybersecurity"
+                        aria-label="View Fortinet cybersecurity certificate">
+                        <img src="certificates/FCAC.png"
+                            alt="Fortinet Certified Associate in Cybersecurity certificate">
+                        <span class="image-view-hint">
+                            <span aria-hidden="true">&#128269;</span>
+                            Enlarge Certificate
                         </span>
-
-                    </div>
-
+                    </button>
                 </div>
+            </article>
 
+            <!-- SUPPORTING CREDENTIALS -->
+            <div class="supporting-credentials">
 
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        01
-                    </span>
-
-                    <h3>
-                        EnGenius Certified Wireless Professional
-                    </h3>
-
-                    <p>
-                        ECWP certification demonstrating knowledge of
-                        wireless networking and EnGenius Cloud technologies.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>EnGenius</span>
-                        <span>Wireless</span>
-                        <span>Networking</span>
-
+                <article class="supporting-credential">
+                    <div class="supporting-icon"><span aria-hidden="true">&#9729;</span></div>
+                    <div class="supporting-info">
+                        <span class="credential-category">NETWORKING</span>
+                        <h3>EnGenius Certifications</h3>
+                        <p>Wireless networking, network configuration, and cloud network management.</p>
+                        <span class="credential-count">4 certifications</span>
                     </div>
+                    <button class="credential-arrow" type="button" data-category="networking"
+                        aria-label="Explore networking certificates">&#8594;</button>
+                </article>
 
-                </div>
+                <article class="supporting-credential">
+                    <div class="supporting-icon"><span aria-hidden="true">&#62;_</span></div>
+                    <div class="supporting-info">
+                        <span class="credential-category">LINUX &amp; AUTOMATION</span>
+                        <h3>Red Hat Training</h3>
+                        <p>Linux administration, system configuration, and Ansible automation.</p>
+                        <span class="credential-count">2 training credentials</span>
+                    </div>
+                    <button class="credential-arrow" type="button" data-category="linux"
+                        aria-label="Explore Linux certificates">&#8594;</button>
+                </article>
+
+                <article class="supporting-credential">
+                    <div class="supporting-icon"><span aria-hidden="true">&#9881;</span></div>
+                    <div class="supporting-info">
+                        <span class="credential-category">IT HARDWARE</span>
+                        <h3>Computer Systems Servicing</h3>
+                        <p>Hardware assembly, maintenance, troubleshooting, and computer networking.</p>
+                        <span class="credential-count">TESDA NC II</span>
+                    </div>
+                    <button class="credential-arrow" type="button" data-category="hardware"
+                        aria-label="Explore hardware certificates">&#8594;</button>
+                </article>
+
+                <article class="supporting-credential">
+                    <div class="supporting-icon"><span aria-hidden="true">&#128737;</span></div>
+                    <div class="supporting-info">
+                        <span class="credential-category">CYBERSECURITY</span>
+                        <h3>Technical Cybersecurity Training</h3>
+                        <p>Technical concepts, security principles, threats, and cybersecurity practices.</p>
+                        <span class="credential-count">Additional training</span>
+                    </div>
+                    <button class="credential-arrow" type="button" data-category="cybersecurity"
+                        aria-label="Explore cybersecurity certificates">&#8594;</button>
+                </article>
 
             </div>
-
-
-            <!-- =========================
-             CERTIFICATE 2
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/ECNS.png')">
-
-                    <img src="certificates/ECNS.png" alt="EnGenius Certified Network Specialist">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        02
-                    </span>
-
-                    <h3>
-                        EnGenius Certified Network Specialist
-                    </h3>
-
-                    <p>
-                        Certification focused on networking concepts,
-                        network configuration and EnGenius technologies.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>EnGenius</span>
-                        <span>Networking</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 3
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/ECNP.png')">
-
-                    <img src="certificates/ECNP.png" alt="EnGenius Certified Network Professional">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        03
-                    </span>
-
-                    <h3>
-                        EnGenius Certified Network Professional
-                    </h3>
-
-                    <p>
-                        Professional-level networking certification
-                        covering advanced network technologies.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>EnGenius</span>
-                        <span>Networking</span>
-                        <span>Cloud</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 4
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/ECSP.png')">
-
-                    <img src="certificates/ECSP.png" alt="EnGenius Certified Security Professional">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        04
-                    </span>
-
-                    <h3>
-                        EnGenius Certified Security Professional
-                    </h3>
-
-                    <p>
-                        Certification covering EnGenius networking
-                        solutions and cloud-based network management.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>EnGenius</span>
-                        <span>Cloud</span>
-                        <span>Networking</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 5
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/FCAC.png')">
-
-                    <img src="certificates/FCAC.png" alt="Fortinet Certified Associate in Cybersecurity">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        05
-                    </span>
-
-                    <h3>
-                        Fortinet Certified Associate in Cybersecurity
-                    </h3>
-
-                    <p>
-                        Cybersecurity certification covering fundamental
-                        security concepts and Fortinet technologies.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>Fortinet</span>
-                        <span>Cybersecurity</span>
-                        <span>Security</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 6
-            ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/RHELAA.png')">
-
-                    <img src="certificates/RHELAA.png" alt="Red Hat Enterprise Linux Automation with Ansible">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        06
-                    </span>
-
-                    <h3>
-                        Red Hat Enterprise Linux Automation with Ansible
-                    </h3>
-
-                    <p>
-                        Training focused on automating Linux system
-                        administration tasks using Red Hat Ansible.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>Red Hat</span>
-                        <span>Automation</span>
-                        <span>Ansible</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 7
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/NC2.png')">
-
-                    <img src="certificates/NC2.png" alt="TESDA Computer Systems Servicing NCII">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        07
-                    </span>
-
-                    <h3>
-                        TESDA Computer Systems Servicing NCII
-                    </h3>
-
-                    <p>
-                        Certification demonstrating competency in assembling,
-                        installing, configuring, maintaining, and repairing
-                        computer systems and networks.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>TESDA</span>
-                        <span>NCII</span>
-                        <span>Computer Systems Servicing</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 8
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/RHA.png')">
-
-                    <img src="certificates/RHA.png" alt="Red Hat System Administration I">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        08
-                    </span>
-
-                    <h3>
-                        Red Hat System Administration I
-                    </h3>
-
-                    <p>
-                        Training focused on fundamental Linux system administration,
-                        including command-line operations, file management,
-                        users and groups, permissions, and system configuration.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>Red Hat</span>
-                        <span>Linux</span>
-                        <span>System Administration</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-             CERTIFICATE 9
-        ========================= -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-image" onclick="openCertificate('certificates/TIC.png')">
-
-                    <img src="certificates/TIC.png" alt="Technical Introduction to Cybersecurity 3.0">
-
-                    <div class="certificate-overlay">
-
-                        <span>
-                            🔍 View Certificate
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="certificate-content">
-
-                    <span class="certificate-number">
-                        09
-                    </span>
-
-                    <h3>
-                        Technical Introduction to Cybersecurity 3.0
-                    </h3>
-
-                    <p>
-                        Cybersecurity training covering fundamental technical
-                        concepts, security principles, threats, and cybersecurity
-                        practices.
-                    </p>
-
-                    <div class="certificate-tags">
-
-                        <span>Cybersecurity</span>
-                        <span>Fortinet</span>
-                        <span>Security</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
         </div>
 
+        <!-- ALL CERTIFICATES: starts collapsed by script.js -->
+        <div class="all-certificates-section is-collapsed" id="allCertificates">
+            <div class="all-certificates-heading">
+                <div>
+                    <span class="credential-category">FULL COLLECTION</span>
+                    <h3>All Certificates</h3>
+                    <p>Explore my certifications and training credentials.</p>
+                </div>
+                <span class="total-credentials">09 CREDENTIALS</span>
+            </div>
+
+            <div class="certificate-filters" aria-label="Filter certificates">
+                <button class="certificate-filter active" type="button" data-filter="all"
+                    aria-pressed="true">All</button>
+                <button class="certificate-filter" type="button" data-filter="networking"
+                    aria-pressed="false">Networking</button>
+                <button class="certificate-filter" type="button" data-filter="cybersecurity"
+                    aria-pressed="false">Cybersecurity</button>
+                <button class="certificate-filter" type="button" data-filter="linux" aria-pressed="false">Linux</button>
+                <button class="certificate-filter" type="button" data-filter="hardware"
+                    aria-pressed="false">Hardware</button>
+            </div>
+
+            <div class="all-certificates-grid">
+
+                <!-- 01: ECWP -->
+                <article class="certificate-card" data-category="networking">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/ECWP.png"
+                        data-title="EnGenius Certified Wireless Professional">
+                        <img src="certificates/ECWP.png" alt="EnGenius Certified Wireless Professional certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">01</span>
+                        <span class="credential-category">NETWORKING</span>
+                        <h4>EnGenius Certified Wireless Professional</h4>
+                        <p>Wireless networking and EnGenius Cloud technologies.</p>
+                        <div class="certificate-tags"><span>EnGenius</span><span>Wireless</span></div>
+                    </div>
+                </article>
+
+                <!-- 02: ECNS -->
+                <article class="certificate-card" data-category="networking">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/ECNS.png"
+                        data-title="EnGenius Certified Network Specialist">
+                        <img src="certificates/ECNS.png" alt="EnGenius Certified Network Specialist certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">02</span>
+                        <span class="credential-category">NETWORKING</span>
+                        <h4>EnGenius Certified Network Specialist</h4>
+                        <p>Networking concepts, configuration, and EnGenius technologies.</p>
+                        <div class="certificate-tags"><span>EnGenius</span><span>Networking</span></div>
+                    </div>
+                </article>
+
+                <!-- 03: ECNP -->
+                <article class="certificate-card" data-category="networking">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/ECNP.png"
+                        data-title="EnGenius Certified Network Professional">
+                        <img src="certificates/ECNP.png" alt="EnGenius Certified Network Professional certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">03</span>
+                        <span class="credential-category">NETWORKING</span>
+                        <h4>EnGenius Certified Network Professional</h4>
+                        <p>Professional-level networking and advanced technologies.</p>
+                        <div class="certificate-tags"><span>EnGenius</span><span>Cloud</span></div>
+                    </div>
+                </article>
+
+                <!-- 04: ECSP -->
+                <article class="certificate-card" data-category="networking">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/ECSP.png"
+                        data-title="EnGenius Certified Security Professional">
+                        <img src="certificates/ECSP.png" alt="EnGenius Certified Security Professional certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">04</span>
+                        <span class="credential-category">NETWORKING</span>
+                        <h4>EnGenius Certified Security Professional</h4>
+                        <p>EnGenius networking solutions and cloud management.</p>
+                        <div class="certificate-tags"><span>EnGenius</span><span>Cloud</span></div>
+                    </div>
+                </article>
+
+                <!-- 05: FCAC -->
+                <article class="certificate-card" data-category="cybersecurity">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/FCAC.png"
+                        data-title="Fortinet Certified Associate in Cybersecurity">
+                        <img src="certificates/FCAC.png" alt="Fortinet Certified Associate in Cybersecurity certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">05</span>
+                        <span class="credential-category">CYBERSECURITY</span>
+                        <h4>Fortinet Certified Associate in Cybersecurity</h4>
+                        <p>Fundamental cybersecurity concepts and security technologies.</p>
+                        <div class="certificate-tags"><span>Fortinet</span><span>Security</span></div>
+                    </div>
+                </article>
+
+                <!-- 06: Red Hat Ansible -->
+                <article class="certificate-card" data-category="linux">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/RHELAA.png"
+                        data-title="Red Hat Enterprise Linux Automation with Ansible">
+                        <img src="certificates/RHELAA.png"
+                            alt="Red Hat Enterprise Linux Automation with Ansible credential" loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">06</span>
+                        <span class="credential-category">LINUX &amp; AUTOMATION</span>
+                        <h4>Red Hat Enterprise Linux Automation with Ansible</h4>
+                        <p>Automating Linux system administration tasks.</p>
+                        <div class="certificate-tags"><span>Red Hat</span><span>Ansible</span></div>
+                    </div>
+                </article>
+
+                <!-- 07: TESDA -->
+                <article class="certificate-card" data-category="hardware">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/NC2.png"
+                        data-title="TESDA Computer Systems Servicing NC II">
+                        <img src="certificates/NC2.png" alt="TESDA Computer Systems Servicing NC II certificate"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">07</span>
+                        <span class="credential-category">IT HARDWARE</span>
+                        <h4>TESDA Computer Systems Servicing NC II</h4>
+                        <p>Computer assembly, installation, maintenance, repair, and networking.</p>
+                        <div class="certificate-tags"><span>TESDA</span><span>NC II</span></div>
+                    </div>
+                </article>
+
+                <!-- 08: Red Hat System Administration -->
+                <article class="certificate-card" data-category="linux">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/RHA.png"
+                        data-title="Red Hat System Administration I">
+                        <img src="certificates/RHA.png" alt="Red Hat System Administration I credential" loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">08</span>
+                        <span class="credential-category">LINUX</span>
+                        <h4>Red Hat System Administration I</h4>
+                        <p>Linux command line, files, permissions, users, groups, and system configuration.</p>
+                        <div class="certificate-tags"><span>Red Hat</span><span>Linux</span></div>
+                    </div>
+                </article>
+
+                <!-- 09: Technical Introduction to Cybersecurity -->
+                <article class="certificate-card" data-category="cybersecurity">
+                    <button class="certificate-image-button" type="button" data-certificate="certificates/TIC.png"
+                        data-title="Technical Introduction to Cybersecurity 3.0">
+                        <img src="certificates/TIC.png" alt="Technical Introduction to Cybersecurity 3.0 credential"
+                            loading="lazy">
+                        <span class="certificate-image-overlay">View Certificate &#8599;</span>
+                    </button>
+                    <div class="certificate-card-content">
+                        <span class="certificate-number">09</span>
+                        <span class="credential-category">CYBERSECURITY</span>
+                        <h4>Technical Introduction to Cybersecurity 3.0</h4>
+                        <p>Technical security concepts, threats, and cybersecurity practices.</p>
+                        <div class="certificate-tags"><span>Cybersecurity</span><span>Fortinet</span></div>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="certificate-results-count" id="certificateResultsCount" aria-live="polite">
+                Showing 9 certificates
+            </p>
+        </div>
+
+        <!-- EXPAND / COLLAPSE -->
+        <div class="certificates-expand-container">
+            <button id="toggleAllCertificates" class="certificates-expand-button" type="button" aria-expanded="false"
+                aria-controls="allCertificates">
+                <span class="expand-button-label">Explore All Certificates</span>
+                <span class="expand-button-icon" aria-hidden="true">&#8595;</span>
+            </button>
+        </div>
     </section>
 
-
-    <!-- =========================
-     CERTIFICATE LIGHTBOX
-========================= -->
-
-    <div id="certificateModal" class="certificate-modal">
-
-        <span class="certificate-close" onclick="closeCertificate()">
+    <!-- ================= SINGLE CERTIFICATE PREVIEW MODAL ================= -->
+    <div id="certificateModal" class="certificate-modal" role="dialog" aria-modal="true"
+        aria-label="Certificate preview" aria-hidden="true">
+        <button class="certificate-close" type="button" aria-label="Close certificate preview">
             &times;
-        </span>
+        </button>
 
-        <img id="certificateModalImage" src="" alt="Certificate Preview">
+        <button class="modal-navigation modal-previous" type="button" aria-label="Previous certificate">
+            &#8592;
+        </button>
 
+        <div class="certificate-modal-content">
+            <p class="modal-certificate-title" id="modalCertificateTitle">
+                Certificate Preview
+            </p>
+
+            <img id="certificateModalImage" src="" alt="Certificate Preview">
+
+            <p class="modal-certificate-counter" id="modalCertificateCounter">
+                1 / 9
+            </p>
+        </div>
+
+        <button class="modal-navigation modal-next" type="button" aria-label="Next certificate">
+            &#8594;
+        </button>
     </div>
 
-
-    <!-- =====================================================
-     CONTACT SECTION
-===================================================== -->
-
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="contact-section">
-
-        <!-- Section Title -->
         <div class="section-title">
-
             <p>GET IN TOUCH</p>
-
             <h2>Contact Me</h2>
-
             <span>
                 Feel free to reach out to me through any of the platforms below.
                 I'm always open to discussing opportunities, projects, and technology.
             </span>
-
         </div>
-
-
-        <!-- =================================================
-         CONTACT CARDS
-    ================================================== -->
 
         <div class="contact-container">
-
-
-            <!-- EMAIL -->
             <a href="mailto:dgeescalante@gmail.com" class="contact-card">
-
-                <div class="contact-icon">
-                    ✉
-                </div>
-
+                <div class="contact-icon">✉</div>
                 <div class="contact-info">
-
                     <span>Email</span>
-
-                    <strong>
-                        dgeescalante@gmail.com
-                    </strong>
-
+                    <strong>dgeescalante@gmail.com</strong>
                 </div>
-
             </a>
 
-
-            <!-- GITHUB -->
             <a href="https://github.com/dionyzeuss" class="contact-card" target="_blank" rel="noopener noreferrer">
-
-                <div class="contact-icon">
-                    ◉
-                </div>
-
+                <div class="contact-icon">◉</div>
                 <div class="contact-info">
-
                     <span>GitHub</span>
-
-                    <strong>
-                        github.com/dionyzeuss
-                    </strong>
-
+                    <strong>github.com/dionyzeuss</strong>
                 </div>
-
             </a>
 
-
-            <!-- LINKEDIN -->
             <a href="https://www.linkedin.com/in/domnic-gabriel-escalante" class="contact-card" target="_blank"
                 rel="noopener noreferrer">
-
-                <div class="contact-icon">
-                    in
-                </div>
-
+                <div class="contact-icon">in</div>
                 <div class="contact-info">
-
                     <span>LinkedIn</span>
-
-                    <strong>
-                        Domnic Gabriel Escalante
-                    </strong>
-
+                    <strong>Domnic Gabriel Escalante</strong>
                 </div>
-
             </a>
 
-
-            <!-- FACEBOOK -->
             <a href="https://www.facebook.com/dionyyzeuss/" class="contact-card" target="_blank"
                 rel="noopener noreferrer">
-
-                <div class="contact-icon">
-                    f
-                </div>
-
+                <div class="contact-icon">f</div>
                 <div class="contact-info">
-
                     <span>Facebook</span>
-
-                    <strong>
-                        Dom Escalante
-                    </strong>
-
+                    <strong>Dom Escalante</strong>
                 </div>
-
             </a>
 
-
-            <!-- INSTAGRAM -->
             <a href="https://www.instagram.com/dgeescalante/" class="contact-card" target="_blank"
                 rel="noopener noreferrer">
-
-                <div class="contact-icon">
-                    ◎
-                </div>
-
+                <div class="contact-icon">◎</div>
                 <div class="contact-info">
-
                     <span>Instagram</span>
-
-                    <strong>
-                        @dgeescalante
-                    </strong>
-
+                    <strong>@dgeescalante</strong>
                 </div>
-
             </a>
 
-
-            <!-- PHONE -->
             <a href="tel:+639564888308" class="contact-card">
-
-                <div class="contact-icon">
-                    ☎
-                </div>
-
+                <div class="contact-icon">☎</div>
                 <div class="contact-info">
-
                     <span>Phone</span>
-
-                    <strong>
-                        +63 956 4888 308
-                    </strong>
-
+                    <strong>+63 956 4888 308</strong>
                 </div>
-
             </a>
-
-
         </div>
 
-
-        <!-- =================================================
-         CONTACT MESSAGE
-    ================================================== -->
-
         <div class="contact-message">
-
             <h3>Let's Work Together</h3>
-
             <p>
                 I'm currently open to opportunities where I can apply my
                 skills in software development, web development, IT support,
                 networking, and game development.
             </p>
-
             <a href="mailto:dgeescalante@gmail.com" class="contact-button">
                 Send Me an Email
             </a>
-
         </div>
-
-
     </section>
 
-
-
-
     <!-- ================= FOOTER ================= -->
-
     <footer>
-
-        <p>
-            © 2026 Domnic Gabriel Escalante.
-            All Rights Reserved.
-        </p>
-
+        <p>© 2026 Domnic Gabriel Escalante. All Rights Reserved.</p>
     </footer>
 
-
     <script src="script.js"></script>
-
 </body>
 
 </html>
