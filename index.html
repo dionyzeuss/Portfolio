@@ -11,9 +11,29 @@
     <title>Domnic Gabriel Escalante | Portfolio</title>
 
     <link rel="stylesheet" href="styles.css">
+
+
+    <!-- Google Fonts: Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Developer Technology Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
 </head>
 
 <body>
+
+    <canvas id="bg-net" aria-hidden="true"></canvas>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <!-- ================= COMPUTER BOOT-UP INTRO ================= -->
     <div id="boot-screen" class="boot-screen">
@@ -46,6 +66,7 @@
 
     <!-- ================= NAVIGATION ================= -->
     <header>
+
         <nav aria-label="Main navigation">
             <h2 class="logo">DG<span>.</span></h2>
 
@@ -114,7 +135,7 @@
     <section id="about" class="about-section">
         <div class="section-title">
             <p>WHO I AM</p>
-            <h2>About Me</h2>
+            <h2 class="typing-text">About Me</h2>
         </div>
 
         <div class="ab-wrap">
@@ -225,11 +246,218 @@
         </div>
     </section>
 
+
+    <!-- ================= TECH STACK ================= -->
+    <section id="tech-stack" class="tech-stack-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span class="section-label">// MY_DEVELOPER_TOOLKIT</span>
+                <br></br>
+                <h2 class="typing-text">Languages, Tools & AI</h2>
+                <p>
+                    Technologies I use to build projects, solve problems,
+                    and improve my development workflow.
+                </p>
+            </div>
+
+            <div class="tech-stack-grid">
+
+                <!-- PROGRAMMING LANGUAGES -->
+                <article class="tech-card">
+                    <div class="tech-card-icon">&lt;/&gt;</div>
+                    <h3>Programming Languages</h3>
+                    <p class="tech-card-subtitle">// languages</p>
+
+                    <div class="tech-icons">
+
+                        <div class="tech-item">
+                            <i class="devicon-java-plain colored" aria-hidden="true"></i>
+                            <span>Java</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-javascript-plain colored" aria-hidden="true"></i>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-python-plain colored" aria-hidden="true"></i>
+                            <span>Python</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-html5-plain colored" aria-hidden="true"></i>
+                            <span>HTML5</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-css3-plain colored" aria-hidden="true"></i>
+                            <span>CSS3</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
+                            <span>SQL</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-godot-plain colored" aria-hidden="true"></i>
+                            <span>GDScript</span>
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- FRAMEWORKS AND DATABASES -->
+                <article class="tech-card">
+                    <div class="tech-card-icon">{ }</div>
+                    <h3>Frameworks & Databases</h3>
+                    <p class="tech-card-subtitle">// development</p>
+
+                    <div class="tech-icons">
+
+                        <div class="tech-item">
+                            <i class="devicon-nextjs-plain" aria-hidden="true"></i>
+                            <span>Next.js</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-nodejs-plain colored" aria-hidden="true"></i>
+                            <span>Node.js</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-vuejs-plain colored" aria-hidden="true"></i>
+                            <span>Vue.js</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-prisma-original" aria-hidden="true"></i>
+                            <span>Prisma ORM</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
+                            <span>MySQL</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-mariadb-original colored" aria-hidden="true"></i>
+                            <span>MariaDB</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-firebase-plain colored" aria-hidden="true"></i>
+                            <span>Firebase</span>
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- DEVELOPMENT TOOLS -->
+                <article class="tech-card">
+                    <div class="tech-card-icon">$_</div>
+                    <h3>Development Tools</h3>
+                    <p class="tech-card-subtitle">// workflow</p>
+
+                    <div class="tech-icons">
+
+                        <div class="tech-item">
+                            <i class="devicon-vscode-plain colored" aria-hidden="true"></i>
+                            <span>VS Code</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-git-plain colored" aria-hidden="true"></i>
+                            <span>Git</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-github-original" aria-hidden="true"></i>
+                            <span>GitHub</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-apache-plain colored" aria-hidden="true"></i>
+                            <span>XAMPP</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-pycharm-plain colored" aria-hidden="true"></i>
+                            <span>PyCharm</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-intellij-plain colored" aria-hidden="true"></i>
+                            <span>IntelliJ IDEA</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-figma-plain colored" aria-hidden="true"></i>
+                            <span>Figma</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-postman-plain colored" aria-hidden="true"></i>
+                            <span>Postman</span>
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- AI WORKFLOW -->
+                <article class="tech-card ai-card">
+                    <div class="tech-card-icon">AI_</div>
+                    <h3>AI-Assisted Development</h3>
+                    <p class="tech-card-subtitle">// learn · build · improve</p>
+
+                    <div class="tech-icons">
+
+                        <div class="tech-item">
+                            <i class="devicon-openai-plain" aria-hidden="true"></i>
+                            <span>ChatGPT</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-githubcopilot-plain" aria-hidden="true"></i>
+                            <span>AI Coding Tools</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tech-tags">
+                        <span>AI-Assisted Coding</span>
+                        <span>Debugging Support</span>
+                        <span>Code Explanation</span>
+                        <span>Problem Solving</span>
+                        <span>Learning New Technologies</span>
+                    </div>
+
+                    <p class="ai-description">
+                        I use AI tools as development assistants to understand
+                        unfamiliar code, investigate errors, explore solutions,
+                        and improve my programming skills. I review and test
+                        the code before integrating it into my projects.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="tech-stack-footer">
+                <span class="status-dot"></span>
+                Always learning. Always building.
+            </div>
+
+        </div>
+    </section>
+
+
     <!-- ================= PROJECTS ================= -->
     <section id="projects" class="projects-section">
         <div class="section-title">
             <p>MY WORK</p>
-            <h2>Projects</h2>
+            <h2 class="typing-text">My Projects</h2>
             <span>
                 Some of the projects I've built while learning and developing
                 my skills.
@@ -429,7 +657,7 @@
     <section id="certificates" class="certificates-section">
         <div class="section-title">
             <p>CREDENTIALS</p>
-            <h2>Certifications &amp; Training</h2>
+            <h2 class="typing-text">Certifications &amp; Training</h2>
             <span>
                 Technical knowledge, practical skills, and continuous learning
                 throughout my IT journey.
@@ -761,7 +989,7 @@
     <section id="contact" class="contact-section">
         <div class="section-title">
             <p>GET IN TOUCH</p>
-            <h2>Contact Me</h2>
+            <h2 class="typing-text">Contact Me</h2>
             <span>
                 Feel free to reach out to me through any of the platforms below.
                 I'm always open to discussing opportunities, projects, and technology.

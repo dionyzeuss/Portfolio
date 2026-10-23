@@ -1350,3 +1350,290 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Portfolio JavaScript initialized successfully.");
 });
+
+// ================= SCROLL TYPING EFFECT =================
+
+const typingElements = document.querySelectorAll(".typing-text");
+
+const typingObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const element = entry.target;
+
+      // Keep the original text so it can be restored on each visit.
+      if (!element.dataset.originalText) {
+        element.dataset.originalText = element.textContent.trim();
+      }
+
+      const originalText = element.dataset.originalText;
+      element.textContent = "";
+      let index = 0;
+
+      const typingSpeed = 55;
+
+      function typeNextCharacter() {
+        if (!element.isConnected) return;
+
+        element.textContent = originalText.slice(0, index + 1);
+        index++;
+
+        if (index < originalText.length) {
+          setTimeout(typeNextCharacter, typingSpeed);
+        }
+      }
+
+      typeNextCharacter();
+
+      // Animate again when the heading re-enters the screen.
+      typingObserver.unobserve(element);
+
+      const resetObserver = new IntersectionObserver(
+        (resetEntries) => {
+          resetEntries.forEach((resetEntry) => {
+            if (!resetEntry.isIntersecting) {
+              resetEntry.target.textContent =
+                resetEntry.target.dataset.originalText;
+
+              resetEntry.target.dataset.animated = "false";
+            } else if (resetEntry.target.dataset.animated === "false") {
+              resetEntry.target.dataset.animated = "true";
+              resetEntry.target.textContent = "";
+              let charIndex = 0;
+
+              function replayTyping() {
+                resetEntry.target.textContent = originalText.slice(
+                  0,
+                  charIndex + 1,
+                );
+                charIndex++;
+
+                if (charIndex < originalText.length) {
+                  setTimeout(replayTyping, typingSpeed);
+                }
+              }
+
+              replayTyping();
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      element.dataset.animated = "true";
+      resetObserver.observe(element);
+    });
+  },
+  { threshold: 0.5 },
+);
+
+typingElements.forEach((element) => {
+  typingObserver.observe(element);
+});
+
+// =========================================
+// ANIMATED DIGITAL NETWORK BACKGROUND
+// =========================================
+
+(() => {
+  const canvas = document.getElementById("bg-net");
+  const progressBar = document.getElementById("scroll-progress");
+
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let width = 0;
+  let height = 0;
+  let particles = [];
+  let animationFrame;
+  let lastFrame = 0;
+
+  const mouse = {
+    x: -1000,
+    y: -1000,
+  };
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(
+      90,
+      Math.max(25, Math.floor((width * height) / 18000)),
+    );
+
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      radius: Math.random() * 1.8 + 0.7,
+    }));
+
+    drawBackground();
+  }
+
+  function drawBackground() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw subtle digital grid lines.
+    ctx.strokeStyle = "rgba(59, 130, 246, 0.055)";
+    ctx.lineWidth = 1;
+
+    const gridSize = 45;
+
+    ctx.beginPath();
+
+    for (let x = 0; x < width; x += gridSize) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+    }
+
+    for (let y = 0; y < height; y += gridSize) {
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+    }
+
+    ctx.stroke();
+
+    // Draw particles and nearby connecting lines.
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i];
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const other = particles[j];
+        const dx = particle.x - other.x;
+        const dy = particle.y - other.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < 125) {
+          ctx.beginPath();
+          ctx.moveTo(particle.x, particle.y);
+          ctx.lineTo(other.x, other.y);
+          ctx.strokeStyle = `rgba(59, 130, 246, ${0.16 * (1 - distance / 125)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+
+      // Soft blue particle glow.
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+
+      ctx.fillStyle = "#60a5fa";
+      ctx.shadowColor = "#3b82f6";
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    // Subtle light around the mouse cursor.
+    if (mouse.x >= 0 && mouse.y >= 0) {
+      const glow = ctx.createRadialGradient(
+        mouse.x,
+        mouse.y,
+        0,
+        mouse.x,
+        mouse.y,
+        180,
+      );
+
+      glow.addColorStop(0, "rgba(59, 130, 246, 0.08)");
+      glow.addColorStop(1, "rgba(59, 130, 246, 0)");
+
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, width, height);
+    }
+  }
+
+  function animate(timestamp) {
+    if (reducedMotion.matches) return;
+
+    // Limit the effect to roughly 30 frames per second.
+    if (timestamp - lastFrame >= 33) {
+      lastFrame = timestamp;
+
+      particles.forEach((particle) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        if (particle.x < 0 || particle.x > width) {
+          particle.vx *= -1;
+        }
+
+        if (particle.y < 0 || particle.y > height) {
+          particle.vy *= -1;
+        }
+
+        particle.x = Math.max(0, Math.min(width, particle.x));
+        particle.y = Math.max(0, Math.min(height, particle.y));
+      });
+
+      drawBackground();
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  function updateScrollProgress() {
+    if (!progressBar) return;
+
+    const scrollableHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress =
+      scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+
+    progressBar.style.width = `${progress}%`;
+  }
+
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+    },
+    { passive: true },
+  );
+
+  window.addEventListener("pointerleave", () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  });
+
+  window.addEventListener("resize", resizeCanvas, { passive: true });
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+
+  reducedMotion.addEventListener("change", () => {
+    cancelAnimationFrame(animationFrame);
+
+    if (reducedMotion.matches) {
+      drawBackground();
+    } else {
+      lastFrame = 0;
+      animationFrame = requestAnimationFrame(animate);
+    }
+  });
+
+  resizeCanvas();
+  updateScrollProgress();
+
+  if (!reducedMotion.matches) {
+    animationFrame = requestAnimationFrame(animate);
+  }
+})();

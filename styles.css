@@ -97,6 +97,14 @@ header {
     z-index: 1000;
 }
 
+#nav-menu li a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
 nav {
 
     max-width: 1400px;
@@ -596,14 +604,323 @@ section.show {
 }
 @media (hover:none){.abg-zone{display:none}}
 
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    border-right: 2px solid #00ff99;
+    animation: typing-cursor 0.8s steps(1) infinite;
+}
+
+@keyframes typing-cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typing-text {
+        animation: none;
+        border-right: none;
+        white-space: normal;
+    }
+}
+
+
+/* =========================================
+   TECH STACK ICONS
+========================================= */
+
+.tech-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 0;
+    min-height: 105px;
+    padding: 14px 8px;
+    border: 1px solid rgba(0, 255, 153, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.tech-item i {
+    font-size: 2.4rem;
+    line-height: 1;
+}
+
+.tech-item span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.tech-item:hover {
+    transform: translateY(-4px);
+    border-color: #00ff99;
+    background: rgba(0, 255, 153, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 255, 153, 0.06);
+}
+
+/* Text-based AI icon */
+.tech-text-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(0, 255, 153, 0.4);
+    border-radius: 10px;
+    color: #00ff99;
+    background: rgba(0, 255, 153, 0.08);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem !important;
+    font-weight: 700;
+}
+
+/* AI card spacing */
+.ai-card .tech-tags {
+    margin-top: 20px;
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+    .tech-icons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .tech-item {
+        min-height: 90px;
+        padding: 12px 5px;
+        gap: 10px;
+    }
+
+    .tech-item i {
+        font-size: 2rem;
+    }
+
+    .tech-item span {
+        font-size: 0.65rem;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .tech-item {
+        transition: none;
+    }
+
+    .tech-item:hover {
+        transform: none;
+    }
+}
+
+
+
+/* =========================================
+   TECH STACK & AI WORKFLOW
+========================================= */
+
+.tech-stack-section {
+    position: relative;
+    padding: 100px 8%;
+    overflow: hidden;
+}
+
+.tech-stack-section .section-heading {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.tech-stack-section .section-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #00ff99;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.tech-stack-section .section-heading h2 {
+    margin-bottom: 16px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.tech-stack-section .section-heading h2 span {
+    color: #00ff99;
+}
+
+.tech-stack-section .section-heading p {
+    line-height: 1.8;
+    opacity: 0.75;
+}
+
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.tech-card {
+    padding: 28px;
+    border: 1px solid rgba(0, 255, 153, 0.17);
+    border-radius: 16px;
+    background: rgba(12, 18, 16, 0.75);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 153, 0.65);
+    box-shadow: 0 12px 35px rgba(0, 255, 153, 0.07);
+}
+
+.tech-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 255, 153, 0.3);
+    border-radius: 12px;
+    color: #00ff99;
+    background: rgba(0, 255, 153, 0.07);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.tech-card h3 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.tech-card-subtitle {
+    margin-bottom: 20px;
+    color: #00ff99;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    opacity: 0.8;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tags span {
+    display: inline-block;
+    padding: 8px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    color: inherit;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    overflow-wrap: anywhere;
+    background: rgba(255, 255, 255, 0.035);
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.tech-tags span:hover {
+    color: #00ff99;
+    border-color: rgba(0, 255, 153, 0.45);
+    background: rgba(0, 255, 153, 0.07);
+}
+
+.ai-card {
+    border-color: rgba(0, 255, 153, 0.3);
+}
+
+.ai-description {
+    margin-top: 20px;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    opacity: 0.8;
+}
+
+.tech-stack-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 35px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #00ff99;
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .tech-stack-section {
+        padding: 70px 5%;
+    }
+
+    .tech-stack-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tech-card {
+        padding: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-card,
+    .tech-tags span {
+        transition: none;
+    }
+
+    .tech-card:hover {
+        transform: none;
+    }
+}
+
 
 /* =====================================================
    PROJECTS
 ===================================================== */
 
 .projects-section {
-
-    background: #070b1a;
+    position: relative;
+    background: transparent;
+    isolation: isolate;
 }
 
 
@@ -3088,3 +3405,133 @@ nav a.active{color:#60a5fa}
 .ab-gallery{max-height:620px}
 .ab-main h3{font-size:clamp(24px,2.5vw,32px)}
 .abg-head{padding:0}
+
+/* ========================================
+   DEVELOPER / PROGRAMMING FONT THEME
+======================================== */
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Main headings */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* Paragraphs and descriptions */
+p,
+li,
+label,
+input,
+textarea,
+button {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Navigation links */
+#nav-menu li a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+/* Logo */
+.logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+}
+
+/* Project and certificate titles */
+.project h3,
+.certificate-card h3 {
+    font-weight: 600;
+}
+
+/* Code-like text selection */
+::selection {
+    background: #00ff99;
+    color: #080808;
+}
+
+/* =========================================
+   ANIMATED DIGITAL BACKGROUND
+========================================= */
+
+#bg-net {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep the website content above the background */
+header,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Preserve the fixed header */
+header {
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Soft blue ambient glow */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            500px circle at var(--mx, 50%) var(--my, 30%),
+            rgba(59, 130, 246, 0.10),
+            transparent 60%
+        ),
+        linear-gradient(
+            rgba(37, 99, 235, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(37, 99, 235, 0.025) 1px,
+            transparent 1px
+        );
+    background-size: auto, 45px 45px, 45px 45px;
+}
+
+/* Scroll progress indicator */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    z-index: 2001;
+    pointer-events: none;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8);
+}
+
+/* Don't animate the background for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+    #bg-net {
+        display: none;
+    }
+
+    body::after {
+        background: none;
+    }
+}
