@@ -958,11 +958,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         type: "image",
-        src: "gallery/gradpic2.jpg",
-        cap: "Graduation day",
-      },
-      {
-        type: "image",
         src: "gallery/capstone.jpg",
         cap: "Defense day",
       },
