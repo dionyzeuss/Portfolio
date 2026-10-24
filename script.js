@@ -159,6 +159,293 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =====================================================
+  // INTERNSHIP EXPERIENCE: STACKED PHOTO GALLERY
+  // =====================================================
+
+  const gallery = document.getElementById("internshipGallery");
+  const lightbox = document.getElementById("internshipLightbox");
+
+  if (gallery && lightbox) {
+    const internshipPhotos = [
+      {
+        src: "OJT/disassembly.jpg",
+        title: "Computer Setup and Maintenance",
+        category: "hardware",
+        label: "Hardware",
+        description:
+          "Assisted with computer setup, PC assembly, maintenance, and hardware and software troubleshooting.",
+      },
+      {
+        src: "OJT/networking.png",
+        title: "Network Troubleshooting",
+        category: "networking",
+        label: "Networking",
+        description:
+          "Practiced LAN cable crimping, cable tracing, and troubleshooting wired network connectivity.",
+      },
+      {
+        src: "OJT/printer.jpg",
+        title: "Troubleshooting Scanner and Printer Connections",
+        category: "printers",
+        label: "Printers & Scanners",
+        description:
+          "Assisted with printer installation, driver configuration, scanner connections, and printer maintenance.",
+      },
+      {
+        src: "OJT/settingUp.jpg",
+        title: "Meeting Room Technical Support",
+        category: "office",
+        label: "Office Support",
+        description:
+          "Helped prepare projectors, display monitors, and meeting equipment for presentations and online meetings.",
+      },
+      {
+        src: "OJT/inventory.jpg",
+        title: "IT Equipment Inventory",
+        category: "hardware",
+        label: "Hardware",
+        description:
+          "Helped organize and record computer parts, IT equipment, and accessories.",
+      },
+    ];
+
+    let visiblePhotos = internshipPhotos.map((photo, index) => ({
+      ...photo,
+      originalIndex: index,
+    }));
+
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+    let galleryAnimationTimer = null;
+
+    const filterButtons = Array.from(
+      document.querySelectorAll(".intern-filter"),
+    );
+
+    const closeButton = document.getElementById("internshipLightboxClose");
+    const previousButton = document.getElementById("internshipPrev");
+    const nextButton = document.getElementById("internshipNext");
+
+    const lightboxImage = document.getElementById("internshipLightboxImage");
+    const lightboxTitle = document.getElementById("internshipLightboxTitle");
+
+    const lightboxDescription = document.getElementById(
+      "internshipLightboxDescription",
+    );
+
+    const lightboxCategory = document.getElementById(
+      "internshipLightboxCategory",
+    );
+
+    const lightboxCounter = document.getElementById(
+      "internshipLightboxCounter",
+    );
+
+    // Create and animate the stacked cards.
+    function renderGallery() {
+      if (galleryAnimationTimer !== null) {
+        window.clearTimeout(galleryAnimationTimer);
+        galleryAnimationTimer = null;
+      }
+
+      gallery.replaceChildren();
+      gallery.classList.remove("spread");
+
+      visiblePhotos.forEach((photo, index) => {
+        const card = document.createElement("article");
+
+        card.className = "internship-card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `View ${photo.title}`);
+
+        const stackIndex = index - (visiblePhotos.length - 1) / 2;
+
+        card.style.setProperty("--stack-index", stackIndex);
+        card.style.setProperty("--stack-depth", visiblePhotos.length - index);
+        card.style.setProperty("--stack-scale", Math.abs(stackIndex));
+        card.style.setProperty("--tilt", `${stackIndex * 1.2}deg`);
+
+        const imageWrapper = document.createElement("div");
+        imageWrapper.className = "internship-card-image";
+
+        const image = document.createElement("img");
+        image.src = photo.src;
+        image.alt = photo.title;
+        image.loading = "lazy";
+
+        image.addEventListener("error", () => {
+          console.warn("Internship image could not load:", photo.src);
+          card.classList.add("image-missing");
+        });
+
+        imageWrapper.appendChild(image);
+
+        const content = document.createElement("div");
+        content.className = "internship-card-content";
+
+        const category = document.createElement("span");
+        category.className = "internship-card-category";
+        category.textContent = photo.label;
+
+        const title = document.createElement("h3");
+        title.textContent = photo.title;
+
+        const description = document.createElement("p");
+        description.textContent = photo.description;
+
+        content.append(category, title, description);
+        card.append(imageWrapper, content);
+
+        function openThisPhoto() {
+          const photoIndex = visiblePhotos.findIndex(
+            (item) => item.originalIndex === photo.originalIndex,
+          );
+
+          openLightbox(photoIndex);
+        }
+
+        card.addEventListener("click", openThisPhoto);
+
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openThisPhoto();
+          }
+        });
+
+        gallery.appendChild(card);
+      });
+
+      // Respect the user's reduced-motion preference.
+      if (reduceMotion) {
+        gallery.classList.add("spread");
+      } else {
+        // Keep the cards stacked briefly before spreading them.
+        galleryAnimationTimer = window.setTimeout(() => {
+          requestAnimationFrame(() => {
+            gallery.classList.add("spread");
+            galleryAnimationTimer = null;
+          });
+        }, 900);
+      }
+    }
+
+    // Update the lightbox content.
+    function showLightboxPhoto() {
+      const photo = visiblePhotos[currentIndex];
+      if (!photo) return;
+
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = photo.title;
+      lightboxTitle.textContent = photo.title;
+      lightboxDescription.textContent = photo.description;
+      lightboxCategory.textContent = photo.label;
+      lightboxCounter.textContent = `${currentIndex + 1} of ${visiblePhotos.length}`;
+    }
+
+    function openLightbox(index) {
+      if (index < 0 || index >= visiblePhotos.length) return;
+
+      currentIndex = index;
+      lastFocusedElement = document.activeElement;
+
+      lightbox.inert = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+
+      showLightboxPhoto();
+      closeButton?.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.inert = true;
+      document.body.style.overflow = "";
+
+      lastFocusedElement?.focus();
+      lastFocusedElement = null;
+    }
+
+    function changeLightboxPhoto(direction) {
+      if (!visiblePhotos.length) return;
+
+      currentIndex =
+        (currentIndex + direction + visiblePhotos.length) %
+        visiblePhotos.length;
+
+      showLightboxPhoto();
+    }
+
+    // Filter cards by category.
+    function applyInternshipFilter(category) {
+      visiblePhotos = internshipPhotos
+        .map((photo, index) => ({
+          ...photo,
+          originalIndex: index,
+        }))
+        .filter((photo) => category === "all" || photo.category === category);
+
+      filterButtons.forEach((button) => {
+        const active = button.dataset.filter === category;
+
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      renderGallery();
+
+      if (lightbox.classList.contains("open")) {
+        if (!visiblePhotos.length) {
+          closeLightbox();
+        } else {
+          currentIndex = 0;
+          showLightboxPhoto();
+        }
+      }
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyInternshipFilter(button.dataset.filter || "all");
+      });
+    });
+
+    closeButton?.addEventListener("click", closeLightbox);
+
+    previousButton?.addEventListener("click", () => {
+      changeLightboxPhoto(-1);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      changeLightboxPhoto(1);
+    });
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("open")) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      } else if (event.key === "ArrowLeft") {
+        changeLightboxPhoto(-1);
+      } else if (event.key === "ArrowRight") {
+        changeLightboxPhoto(1);
+      }
+    });
+
+    // Display the stacked cards on page load.
+    renderGallery();
+  }
+
+  // =====================================================
   // 4. BOOT-UP INTRO
   // Plays on every page load.
   // Total duration: approximately 5 seconds.
@@ -958,19 +1245,29 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         type: "image",
+        src: "gallery/grad.jpg",
+        cap: "Moments before the Ceremony",
+      },
+      {
+        type: "image",
+        src: "gallery/gradpic3.jpg",
+        cap: "After the Graduation",
+      },
+      {
+        type: "image",
         src: "gallery/capstone.jpg",
         cap: "Defense day",
+      },
+      {
+        type: "image",
+        src: "gallery/research_team.jpg",
+        cap: "My Research Team",
       },
       {
         type: "video",
         src: "gallery/capstone2.mp4",
         poster: "gallery/capstone.jpg",
         cap: "Capstone project demo",
-      },
-      {
-        type: "image",
-        src: "gallery/sampaguita.jpg",
-        cap: "Sampaguita Interlude",
       },
     ];
 

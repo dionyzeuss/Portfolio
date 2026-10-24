@@ -177,74 +177,152 @@
                 </div>
             </div>
 
-            <!-- Information cards -->
-            <div class="ab-cards">
-                <article class="ab-card wide">
-                    <span class="ab-icon">🎓</span>
-                    <div>
-                        <span class="ab-label">Degree</span>
-                        <h4>BS Information Technology</h4>
-                    </div>
-                </article>
 
-                <article class="ab-card">
-                    <span class="ab-icon">💼</span>
-                    <div>
-                        <span class="ab-label">Experience</span>
-                        <h4>IT Support &amp; Web Development</h4>
-                    </div>
-                </article>
 
-                <article class="ab-card">
-                    <span class="ab-icon">🌎</span>
-                    <div>
-                        <span class="ab-label">Location</span>
-                        <h4>Philippines</h4>
-                    </div>
-                </article>
-
-                <article class="ab-card wide goal">
-                    <span class="ab-icon">🚀</span>
-                    <div>
-                        <span class="ab-label">Goal</span>
-                        <h4>Software Engineer</h4>
-                    </div>
-                </article>
-            </div>
 
             <!-- About gallery -->
-            <div class="abg-head">
-                <h3>Gallery</h3>
-                <p>Moments from graduation and my capstone project.</p>
-            </div>
+            <div class="ab-gallery-column">
+                <div class="abg-head">
+                    <h3>Gallery</h3>
+                    <p>Moments from graduation and my capstone project.</p>
+                </div>
 
-            <div class="ab-gallery" id="abGallery" tabindex="0" role="region" aria-roledescription="carousel"
-                aria-label="About me gallery">
-                <div class="abg-stage"></div>
+                <div class="ab-gallery" id="abGallery" tabindex="0" role="region" aria-roledescription="carousel"
+                    aria-label="About me gallery">
+                    <div class="abg-stage"></div>
 
-                <button class="abg-arrow prev" type="button" aria-label="Previous slide">
-                    &#8249;
-                </button>
+                    <button class="abg-arrow prev" type="button" aria-label="Previous slide">
+                        &#8249;
+                    </button>
 
-                <button class="abg-arrow next" type="button" aria-label="Next slide">
-                    &#8250;
-                </button>
+                    <button class="abg-arrow next" type="button" aria-label="Next slide">
+                        &#8250;
+                    </button>
 
-                <button class="abg-pill abg-toggle" type="button" aria-pressed="false">
-                    Pause
-                </button>
+                    <button class="abg-pill abg-toggle" type="button" aria-pressed="false">
+                        Pause
+                    </button>
 
-                <button class="abg-pill abg-sound" type="button" hidden>
-                    Sound off
-                </button>
+                    <button class="abg-pill abg-sound" type="button" hidden>
+                        Sound off
+                    </button>
 
-                <div class="abg-bottom">
-                    <p class="abg-caption" aria-live="polite"></p>
-                    <div class="abg-dots"></div>
+                    <div class="abg-bottom">
+                        <p class="abg-caption" aria-live="polite"></p>
+                        <div class="abg-dots"></div>
+                    </div>
                 </div>
             </div>
+
+    </section>
+
+
+
+    <!-- INTERNSHIP EXPERIENCE SECTION -->
+
+    <section id="internship" class="internship-section">
+        <div class="internship-container">
+
+            <!-- Section Heading -->
+            <div class="internship-heading">
+                <span class="internship-eyebrow">
+                    PROFESSIONAL EXPERIENCE
+                </span><br></br>
+
+                <h2 class="typing-text">Internship Experience</h2>
+
+                <p>
+                    A look at my hands-on IT support training and technical
+                    experience at Starlight Business Consulting Services Inc.
+                </p>
+            </div>
+
+            <!-- Internship Summary -->
+            <div class="internship-summary">
+                <div class="internship-summary-card">
+                    <span class="internship-number">500</span>
+                    <span class="internship-label">Hours of Internship</span>
+                </div>
+
+                <div class="internship-summary-card">
+                    <span class="internship-number">IT</span>
+                    <span class="internship-label">Technical Support</span>
+                </div>
+
+                <div class="internship-summary-card">
+                    <span class="internship-number">Hands-on</span>
+                    <span class="internship-label">Practical Experience</span>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="internship-filters" aria-label="Filter internship photos">
+                <button class="intern-filter active" data-filter="all" type="button" aria-pressed="true">
+                    All
+                </button>
+
+                <button class="intern-filter" data-filter="hardware" type="button" aria-pressed="false">
+                    Hardware
+                </button>
+
+                <button class="intern-filter" data-filter="networking" type="button" aria-pressed="false">
+                    Networking
+                </button>
+
+                <button class="intern-filter" data-filter="printers" type="button" aria-pressed="false">
+                    Printers &amp; Scanners
+                </button>
+
+                <button class="intern-filter" data-filter="office" type="button" aria-pressed="false">
+                    Office Support
+                </button>
+            </div>
+
+            <!-- Stacked Cards Gallery -->
+            <div class="internship-gallery" id="internshipGallery" aria-label="Internship photo gallery">
+                <!-- JavaScript generates the stacked cards here. -->
+            </div>
+
+            <p class="internship-gallery-note">
+                Explore my internship experience. Select a card to view the photo.
+            </p>
+
         </div>
     </section>
+
+
+    <!-- INTERNSHIP PHOTO LIGHTBOX -->
+    <div class="internship-lightbox" id="internshipLightbox" role="dialog" aria-modal="true"
+        aria-label="Internship photo viewer" aria-hidden="true" inert>
+        <button class="intern-lightbox-close" id="internshipLightboxClose" type="button"
+            aria-label="Close photo viewer">
+            &times;
+        </button>
+
+        <button class="intern-lightbox-arrow prev" id="internshipPrev" type="button" aria-label="Previous photo">
+            &#8249;
+        </button>
+
+        <div class="intern-lightbox-content">
+            <img id="internshipLightboxImage" src="" alt="" />
+
+            <div class="intern-lightbox-caption">
+                <span id="internshipLightboxCategory"></span>
+
+                <h3 id="internshipLightboxTitle"></h3>
+
+                <p id="internshipLightboxDescription"></p>
+
+                <span id="internshipLightboxCounter"></span>
+            </div>
+        </div>
+
+        <button class="intern-lightbox-arrow next" id="internshipNext" type="button" aria-label="Next photo">
+            &#8250;
+        </button>
+    </div>
+
+
 
 
     <!-- ================= TECH STACK ================= -->
