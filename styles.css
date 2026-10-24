@@ -4154,3 +4154,8 @@ body::after {
       aspect-ratio: 4 / 3;
     }
   }
+.contact-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
