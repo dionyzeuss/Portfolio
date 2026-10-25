@@ -123,7 +123,7 @@ nav {
 
 
 /* Crown logo */
-.snorlax-logo {
+.crown-logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +137,7 @@ nav {
     overflow: visible;
 }
 
-.snorlax-logo img {
+.crown-logo img {
     display: block;
     width: 100%;
     height: 100%;
@@ -147,11 +147,11 @@ nav {
     outline: none !important;
     box-shadow: none !important;
     border-radius: 0;
-    animation: snorlaxSpin 4s linear infinite;
+    animation: crownSpin 4s linear infinite;
     backface-visibility: visible;
 }
 
-@keyframes snorlaxSpin {
+@keyframes crownSpin {
     from {
         transform: rotateY(0deg);
     }
@@ -4340,47 +4340,5 @@ body::after {
     #projects .project-link-arrow,
     #projects .project-link::before {
         transition: none;
-    }
-}
-/* ================= ANIMATED CROWN LOGO ================= */
-
-.crown-logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    perspective: 500px;
-    text-decoration: none;
-}
-
-.crown-logo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: crownRotate 5s ease-in-out infinite;
-    filter: drop-shadow(0 0 7px rgba(56, 189, 248, 0.6));
-    transition: filter 0.3s ease;
-}
-
-.snorlax-logo:hover img {
-    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 1));
-}
-
-@keyframes snorlaxRotate {
-    0%, 100% {
-        transform: rotateY(-20deg) rotateZ(-3deg);
-    }
-
-    50% {
-        transform: rotateY(20deg) rotateZ(3deg);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .crown-logo img {
-        animation: none;
     }
 }
